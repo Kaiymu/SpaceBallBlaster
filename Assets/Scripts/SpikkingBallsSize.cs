@@ -10,7 +10,6 @@ public class SpikkingBallsSize : MonoBehaviour {
 
 	void Start()
 	{
-		Debug.Log (sizeBall);
 		switch(sizeBall)
 		{
 			case  Size.normalSize:
@@ -27,7 +26,6 @@ public class SpikkingBallsSize : MonoBehaviour {
 		}
 
 		this.transform.localScale = _scaleBall;
-
 	}
 	
 }

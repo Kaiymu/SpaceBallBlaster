@@ -6,7 +6,7 @@ public class Bounce: MonoBehaviour
 	public float speedforce;
 	public float speedRotate;
 
-	public enum DirectionBall{UpLeft, UpRight};
+	public enum DirectionBall{UpLeft, UpRight, DownLeft, DownRight};
 	public DirectionBall directionBall;
 
 	private Vector2 _direction;
@@ -19,9 +19,14 @@ public class Bounce: MonoBehaviour
 			case DirectionBall.UpLeft :
 				_direction = new Vector2(-1, -1);
 			break;
-
 			case DirectionBall.UpRight :
 				_direction = new Vector2(1, -1);	
+			break;
+			case DirectionBall.DownLeft :
+				_direction = new Vector2(-1, 1);	
+			break;
+			case DirectionBall.DownRight :
+				_direction = new Vector2(1, 1);	
 			break;
 		}
 

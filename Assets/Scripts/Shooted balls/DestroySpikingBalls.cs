@@ -3,18 +3,21 @@ using System.Collections;
 
 public class DestroySpikingBalls : MonoBehaviour {
 
+	public int numberSpikkedBalls;
+	public GameObject colorBlinkingManager;
+
 	private GameObject _spikedBallPrefab;
+
 	void Awake()
 	{	
-		// Créer 3 prefabs différent, c'est quand meme mieux :).
 		_spikedBallPrefab = (GameObject) Resources.Load("Prefabs/Spikking Balls/SpikkingBalls");
 	} 
 	
 	void OnCollisionEnter2D(Collision2D col)
-	{
+	{	
 		if(col.transform.tag == "SpikkedBalls")
 		{
-			instantiateSpikedBalls(2, col.gameObject);
+			instantiateSpikedBalls(numberSpikkedBalls, col.gameObject);
 			Destroy(this.gameObject);
 			Destroy(col.gameObject);
 		}
@@ -32,7 +35,7 @@ public class DestroySpikingBalls : MonoBehaviour {
 			for(int i = 0; i < number; i++)
 			{
 				GameObject o = (GameObject) Instantiate(_spikedBallPrefab, this.transform.position, Quaternion.identity);
-
+				o.GetComponent<CollisionDamagePlayer>().blinkColor = colorBlinkingManager;
 				if(sizeBall == SpikkingBallsSize.Size.normalSize) // If it's normal, we instantiate a mid ball.
 				{
 					if(i == 0)
@@ -47,8 +50,20 @@ public class DestroySpikingBalls : MonoBehaviour {
 						o.GetComponent<SpikkingBallsSize>().sizeBall = SpikkingBallsSize.Size.midSize;
 					}
 
+					if(i == 2)
+					{
+						o.GetComponent<Bounce>().directionBall = Bounce.DirectionBall.DownLeft;
+						o.GetComponent<SpikkingBallsSize>().sizeBall = SpikkingBallsSize.Size.midSize;
+					}
+
+					if(i == 3)
+					{
+						o.GetComponent<Bounce>().directionBall = Bounce.DirectionBall.DownRight;
+						o.GetComponent<SpikkingBallsSize>().sizeBall = SpikkingBallsSize.Size.midSize;
+					}
+
 				}	
-				// ya un bug ici.
+
 				else if(sizeBall == SpikkingBallsSize.Size.midSize) // If it's mid, we instantiate a small ball.
 				{
 					if(i == 0)
@@ -60,6 +75,18 @@ public class DestroySpikingBalls : MonoBehaviour {
 					if(i == 1)
 					{
 						o.GetComponent<Bounce>().directionBall = Bounce.DirectionBall.UpRight;
+						o.GetComponent<SpikkingBallsSize>().sizeBall = SpikkingBallsSize.Size.smallSize;
+					}
+
+					if(i == 2)
+					{
+						o.GetComponent<Bounce>().directionBall = Bounce.DirectionBall.DownLeft;
+						o.GetComponent<SpikkingBallsSize>().sizeBall = SpikkingBallsSize.Size.smallSize;
+					}
+				
+					if(i == 3)
+					{
+						o.GetComponent<Bounce>().directionBall = Bounce.DirectionBall.DownRight;
 						o.GetComponent<SpikkingBallsSize>().sizeBall = SpikkingBallsSize.Size.smallSize;
 					}
 				}

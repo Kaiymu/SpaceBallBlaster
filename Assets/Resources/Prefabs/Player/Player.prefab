@@ -87,6 +87,7 @@ MonoBehaviour:
   inputHandler: {fileID: 0}
   speed: 10
   fireRate: 1
+  blinkingManager: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

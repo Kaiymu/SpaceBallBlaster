@@ -6,6 +6,7 @@ public class PlayerShoot : MonoBehaviour {
 	public InputHandler inputHandler;
 	public float speed;
 	public float fireRate;
+	public GameObject blinkingManager;
 
 	private Object _ballPrefab;
 	private ShootMovement _shootSpeed;
@@ -31,6 +32,7 @@ public class PlayerShoot : MonoBehaviour {
 		{
 			GameObject o = (GameObject) Instantiate(_ballPrefab, this.transform.position, Quaternion.identity);
 			o.GetComponent<ShootMovement>().setSpeed(speed);
+			o.GetComponent<DestroySpikingBalls>().colorBlinkingManager = blinkingManager;
 			_lastShot = Time.time;
 		}
 	}
