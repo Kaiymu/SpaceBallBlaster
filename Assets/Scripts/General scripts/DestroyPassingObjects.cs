@@ -3,8 +3,9 @@ using System.Collections;
 
 public class DestroyPassingObjects : MonoBehaviour {
 
-	void OnTriggerEnter2D(Collider2D col)
+	void OnCollisionEnter2D(Collision2D col)
 	{
+		Debug.Log (col.transform.name);
 		Destroy(col.gameObject);
 	}
 }
