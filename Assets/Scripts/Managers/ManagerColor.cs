@@ -1,9 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BlinkColor : MonoBehaviour {
+public class ManagerColor : MonoBehaviour {
 	
 	private Color _blink;
+
+	public static ManagerColor Instance { get; private set;}
+
+	void Awake()
+	{
+		if(Instance != null && Instance != this)
+		{
+			Destroy(gameObject);
+		}
+		
+		Instance = this;
+		
+		DontDestroyOnLoad(gameObject);
+	}
+
 	// To optimize, too bad.
 	public void StartBlink(GameObject _objectToFade, float _numberFade, float _speedFade)
 	{

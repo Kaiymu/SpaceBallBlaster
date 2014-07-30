@@ -12,7 +12,7 @@ public class SpikkingBallsSize : MonoBehaviour {
 	{
 		switch(sizeBall)
 		{
-			case  Size.normalSize:
+			case Size.normalSize:
 				_scaleBall = new Vector3(1f, 1f, 1f);
 			break;
 

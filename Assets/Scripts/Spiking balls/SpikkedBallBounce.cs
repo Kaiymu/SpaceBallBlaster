@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Bounce: MonoBehaviour 
+public class SpikkedBallBounce: MonoBehaviour 
 {
 	public float speedforce;
 	public float speedRotate;
@@ -16,16 +16,16 @@ public class Bounce: MonoBehaviour
 	{	
 		switch(directionBall)
 		{
-			case DirectionBall.UpLeft :
+			case DirectionBall.UpRight :
 				_direction = new Vector2(-1, -1);
 			break;
-			case DirectionBall.UpRight :
+			case DirectionBall.UpLeft:
 				_direction = new Vector2(1, -1);	
 			break;
-			case DirectionBall.DownLeft :
+			case DirectionBall.DownRight :
 				_direction = new Vector2(-1, 1);	
 			break;
-			case DirectionBall.DownRight :
+			case DirectionBall.DownLeft :
 				_direction = new Vector2(1, 1);	
 			break;
 		}

@@ -3,7 +3,8 @@ using System.Collections;
 
 public class PlayerLife : MonoBehaviour {
 
-	private int _life = 5;
+	[SerializeField]
+	private int _life;
 	
 	public int getLife()
 	{
@@ -12,10 +13,9 @@ public class PlayerLife : MonoBehaviour {
 
 	public void setLife(int life)
 	{
-		if(_life < 0)
+		if(_life <= 0)
 			_life = 0;
 		else
-			_life -= life;
+			_life += life;
 	}
-
 }

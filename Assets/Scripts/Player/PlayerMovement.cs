@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 			
-	public InputHandler inputHandler;
 	public float speed;
 	public float minSpeed;
 	public float maxSpeed;
@@ -18,13 +17,10 @@ public class PlayerMovement : MonoBehaviour {
 	{
 		_velocity = new Vector2(Mathf.Lerp(minSpeed, maxSpeed, Time.time), 0) * speed;
 
-		if(inputHandler.isMovingLeft())
+		if(ManagerInput.Instance.isMovingLeft())
 			this.transform.Translate(-_velocity * Time.deltaTime);
 
-
-		if(inputHandler.isMovingRight())
+		if(ManagerInput.Instance.isMovingRight())
 			this.transform.Translate(_velocity * Time.deltaTime);
-
-		
 	}
 }

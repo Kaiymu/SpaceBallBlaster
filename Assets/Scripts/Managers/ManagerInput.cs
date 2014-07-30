@@ -1,9 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InputHandler : MonoBehaviour {
+public class ManagerInput : MonoBehaviour {
 
+	public static ManagerInput Instance {get; private set;}
 	// Keep all the gesture of the game. Really easy if i want to add other key, or a pad for exemple.
+
+	void Awake()
+	{
+		if(Instance != null && Instance != this)
+		{
+			Destroy(gameObject);
+		}
+
+		Instance = this;
+
+		DontDestroyOnLoad(gameObject);
+	}
 	public bool isMovingLeft()
 	{
 		if(Input.GetKey("q"))
