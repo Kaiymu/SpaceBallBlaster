@@ -12,7 +12,6 @@ public class DestroySpikingBalls : MonoBehaviour {
 	{	
 		_spikedBallPrefab = (GameObject) Resources.Load("Prefabs/Spikking Balls/SpikkingBalls");
 		_lifePowerUp      = (GameObject) Resources.Load("Prefabs/PowerUp/PowerUp_TripleShoot");
-
 	} 
 	
 	void OnCollisionEnter2D(Collision2D col)
@@ -20,9 +19,11 @@ public class DestroySpikingBalls : MonoBehaviour {
 		if(col.transform.tag == "SpikkedBalls")
 		{
 			instantiateSpikedBalls(numberSpikkedBalls, col.gameObject);
+
 			GameObject o = (GameObject) Instantiate(_lifePowerUp, this.transform.position, Quaternion.identity);
 			o.GetComponent<PowerUpTripleShoot>().speed = 1;
 			ManagerArray.Instance.removeSpikkedFromArray(col.gameObject);
+
 			Destroy(this.gameObject);
 			Destroy(col.gameObject);
 		}
