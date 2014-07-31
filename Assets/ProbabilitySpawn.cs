@@ -5,7 +5,18 @@ public class ProbabilitySpawn : MonoBehaviour {
 
 	private float _randomNumber;
 
-	bool spawnGameobjects(float _percentApprearing)
+	public static ProbabilitySpawn Instance {get; private set;}
+
+	void Awake()
+	{
+		if(Instance != null && Instance != this)
+			Destroy(gameObject);
+	
+		Instance = this;
+		DontDestroyOnLoad(gameObject);
+	}
+
+	public bool spawnGameobjects(float _percentApprearing)
 	{
 		_randomNumber = Random.Range(1, 100);
 

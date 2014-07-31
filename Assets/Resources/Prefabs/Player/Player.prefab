@@ -14,7 +14,7 @@ GameObject:
   - 50: {fileID: 5000000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.427089691, y: -4.35502291, z: 0}
+  m_LocalPosition: {x: 4.14222431, y: -6.4983964, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -69,7 +69,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788956655bac97541a6ef3421750dc9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputHandler: {fileID: 0}
   speed: 5
   minSpeed: 0
   maxSpeed: 2
@@ -84,10 +83,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dacaae2ce6aeae4c8c6ca53a563a8ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputHandler: {fileID: 0}
   speed: 4
   fireRate: 1
-  shootType: 0
+  ammoTripleShoot: 5
+  ammoAttractShoot: 5
+  shootTypeTest:
+  - normal
+  - tripleShoot
+  - attractShoot
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

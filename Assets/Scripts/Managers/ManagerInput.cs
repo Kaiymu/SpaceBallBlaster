@@ -40,4 +40,21 @@ public class ManagerInput : MonoBehaviour {
 		else
 			return false;
 	}
+
+	public bool isChangingSpellLeft()
+	{
+		if(Input.GetKeyDown("a"))
+			return true;
+		else
+			return false;
+	}
+
+	
+	public bool isChangingSpellRight()
+	{
+		if(Input.GetKeyDown("e"))
+			return true;
+		else
+			return false;
+	}
 }

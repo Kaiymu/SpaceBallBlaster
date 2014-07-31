@@ -71,7 +71,7 @@ public class SpikkedBallBounce: MonoBehaviour
 
 	void Update()
 	{
-		// The ball rotate on herself.
+		// The ball rotate on itself.
 		transform.Rotate(Vector3.forward * speedRotate * Time.deltaTime);
 	}
 }

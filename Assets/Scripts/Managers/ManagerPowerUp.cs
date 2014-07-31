@@ -2,35 +2,32 @@
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+
 public class ManagerPowerUp : MonoBehaviour {
 	
 	public static ManagerPowerUp Instance { get; private set;}
 
-	public string powerUpBasePath = "Prefabs/PowerUp/base";
+	public string powerUpBasePath = "Prefabs/PowerUp/base/";
 
-	private GameObject _powerUpLife;
-	private GameObject _powerUpTripleShoot;
-	private GameObject _powerUpAttractShoot;
+	private GameObject _powerUpBase;
+	private Transform _childPowerUpBase;
 
 	void Awake()
 	{
-		// A faire mieux parce que caca
-		_powerUpLife         = (GameObject) Resources.Load("Prefabs/PowerUp/PowerUp_Life");
-		_powerUpTripleShoot  = (GameObject) Resources.Load("Prefabs/PowerUp/PowerUp_TripleShoot");
-		_powerUpAttractShoot = (GameObject) Resources.Load("Prefabs/PowerUp/PowerUp_Attract");
+		_powerUpBase = (GameObject) Resources.Load(powerUpBasePath+"PowerUp_Base");
 
-		ManagerArray.Instance.addPowerUpToArray(_powerUpLife);
-		ManagerArray.Instance.addPowerUpToArray(_powerUpTripleShoot);
-		ManagerArray.Instance.addPowerUpToArray(_powerUpAttractShoot);
-
+		// Looping throught my parent gameobject to retrieve all the childs.
+		for(int i = 0; i < _powerUpBase.transform.childCount; i++)
+		{
+			_childPowerUpBase = _powerUpBase.transform.GetChild(i);
+			ManagerArray.Instance.addPowerUpToArray(_childPowerUpBase.gameObject);
+		}
 
 		if(Instance != null && Instance != this)
 			Destroy(gameObject);
 
 
 		Instance = this;
-
 		DontDestroyOnLoad(gameObject);
 	}
 
@@ -38,4 +35,5 @@ public class ManagerPowerUp : MonoBehaviour {
 	{
 		me.transform.Translate(new Vector2(0, -speed) * Time.deltaTime);
 	}
+
 }

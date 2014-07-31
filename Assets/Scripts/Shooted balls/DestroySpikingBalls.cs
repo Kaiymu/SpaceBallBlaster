@@ -1,18 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class DestroySpikingBalls : MonoBehaviour {
 
 	public int numberSpikkedBalls;
+	public int chanceSpawn = 50;
 
 	private GameObject _spikedBallPrefab;
-	private GameObject _lifePowerUp;
+	private GameObject _randomPowerUp;
+	private List<GameObject> _listPowerUp;
 
 	void Awake()
 	{	
 		_spikedBallPrefab = (GameObject) Resources.Load("Prefabs/Spikking Balls/SpikkingBalls");
-		_lifePowerUp      = (GameObject) Resources.Load("Prefabs/PowerUp/PowerUp_TripleShoot");
 	} 
+
+	void Start()
+	{
+		_listPowerUp = ManagerArray.Instance.getPowerUp();
+	}
 	
 	void OnCollisionEnter2D(Collision2D col)
 	{	
@@ -20,8 +27,12 @@ public class DestroySpikingBalls : MonoBehaviour {
 		{
 			instantiateSpikedBalls(numberSpikkedBalls, col.gameObject);
 
-			GameObject o = (GameObject) Instantiate(_lifePowerUp, this.transform.position, Quaternion.identity);
-			o.GetComponent<PowerUpTripleShoot>().speed = 1;
+			if(ProbabilitySpawn.Instance.spawnGameobjects(chanceSpawn))
+			{
+				_randomPowerUp = _listPowerUp[Random.Range( 0, _listPowerUp.Count)];
+				GameObject o = (GameObject) Instantiate(_randomPowerUp, this.transform.position, Quaternion.identity);
+				o.GetComponent<PowerUpSetSpeed>().speed = 1;
+			}
 			ManagerArray.Instance.removeSpikkedFromArray(col.gameObject);
 
 			Destroy(this.gameObject);
