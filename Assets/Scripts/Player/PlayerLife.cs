@@ -2,15 +2,19 @@
 using System.Collections;
 
 public class PlayerLife : MonoBehaviour {
-
-	[SerializeField]
+	
 	private int _life;
+
+	void Start()
+	{
+		_life = ManagerDifficulty.Instance.getPlayerLife();
+	}
 	
 	public int getLife()
 	{
 		return _life;
 	}
-
+	
 	public void setLife(int life)
 	{
 		if(_life <= 0)

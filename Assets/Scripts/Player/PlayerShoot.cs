@@ -6,8 +6,8 @@ public class PlayerShoot : MonoBehaviour {
 	public float speed;
 	public float fireRate;
 
-	public int ammoTripleShoot;
-	public int ammoAttractShoot;
+	private int _ammoTripleShoot;
+	private int _ammoAttractShoot;
 	
 	public string[] shootTypeTest;
 
@@ -18,6 +18,26 @@ public class PlayerShoot : MonoBehaviour {
 	private ShootMovement _shootSpeed;
 	private float _lastShot = 0.0f;
 
+	public int getAmmoTripleShoot()
+	{
+		return _ammoTripleShoot;
+	}
+
+	public void setAmmoTripleShoot(int _ammo)
+	{
+		_ammoTripleShoot += _ammo;
+	}
+
+	public int getAmmoAttractShoot()
+	{
+		return _ammoAttractShoot;
+	}
+	
+	public void setAmmoAttractShoot(int _ammo)
+	{
+		_ammoAttractShoot += _ammo;
+	}
+	
 	// I get the ball from the Resouces folder
 	void Awake()
 	{	
@@ -60,9 +80,9 @@ public class PlayerShoot : MonoBehaviour {
 				_shootedBall.GetComponent<ShootMovement>().setSpeed(speed);
 			}
 
-			if(shootTypeTest[_currentPosArray] == "tripleShoot" && ammoTripleShoot > 0)
+			if(shootTypeTest[_currentPosArray] == "tripleShoot" && _ammoTripleShoot > 0)
 			{
-				ammoTripleShoot--;
+				_ammoTripleShoot--;
 				for(int j = 0; j < 3; j++)
 				{
 					_shootedBall= (GameObject) Instantiate(_ballPrefab, this.transform.position, Quaternion.identity);
@@ -77,11 +97,9 @@ public class PlayerShoot : MonoBehaviour {
 				}
 			}
 
-			Debug.Log (shootTypeTest[_currentPosArray]);
-			if(shootTypeTest[_currentPosArray] == "attractShoot" && ammoAttractShoot > 0)
+			if(shootTypeTest[_currentPosArray] == "attractShoot" && _ammoAttractShoot > 0)
 			{
-				Debug.Log ("toto");
-				ammoAttractShoot--;
+				_ammoAttractShoot--;
 				_shootedBall = (GameObject) Instantiate(_ballPrefab, this.transform.position, Quaternion.identity);
 				_shootedBall.GetComponent<ShootMovement>().setSpeed(speed);
 				_shootedBall.AddComponent("AttractEffect");

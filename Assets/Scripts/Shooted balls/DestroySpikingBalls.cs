@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class DestroySpikingBalls : MonoBehaviour {
 
-	public int numberSpikkedBalls;
-	public int chanceSpawn = 50;
+	private int _numberSpikkedBalls;
+	private int _chanceSpawn;
 
 	private GameObject _spikedBallPrefab;
 	private GameObject _randomPowerUp;
@@ -17,7 +17,9 @@ public class DestroySpikingBalls : MonoBehaviour {
 	} 
 
 	void Start()
-	{
+	{	
+		_chanceSpawn = ManagerDifficulty.Instance.getBonusChanceSpawn;
+		_numberSpikkedBalls =  ManagerDifficulty.Instance.getNumberSpikkedBalls;
 		_listPowerUp = ManagerArray.Instance.getPowerUp();
 	}
 	
@@ -25,11 +27,11 @@ public class DestroySpikingBalls : MonoBehaviour {
 	{	
 		if(col.transform.tag == "SpikkedBalls")
 		{
-			instantiateSpikedBalls(numberSpikkedBalls, col.gameObject);
+			instantiateSpikedBalls(_numberSpikkedBalls, col.gameObject);
 
-			if(ProbabilitySpawn.Instance.spawnGameobjects(chanceSpawn))
+			if(ProbabilitySpawn.Instance.spawnGameobjects(_chanceSpawn))
 			{
-				_randomPowerUp = _listPowerUp[Random.Range( 0, _listPowerUp.Count)];
+				_randomPowerUp = _listPowerUp[Random.Range(0, _listPowerUp.Count)];
 				GameObject o = (GameObject) Instantiate(_randomPowerUp, this.transform.position, Quaternion.identity);
 				o.GetComponent<PowerUpSetSpeed>().speed = 1;
 			}
