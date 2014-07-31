@@ -1,4 +1,4 @@
 SpaceBallBlaster
 ================
 
-First Unity game made only by myself to train and understand Unity. 
+First Unity game made entirely by myself (Really proud of this actually :))
