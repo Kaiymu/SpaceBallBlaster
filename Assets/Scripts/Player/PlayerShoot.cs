@@ -18,6 +18,7 @@ public class PlayerShoot : MonoBehaviour {
 	private ShootMovement _shootSpeed;
 	private float _lastShot = 0.0f;
 
+
 	public int getAmmoTripleShoot()
 	{
 		return _ammoTripleShoot;
@@ -73,7 +74,6 @@ public class PlayerShoot : MonoBehaviour {
 	{
 		if (Time.time > fireRate + _lastShot)
 		{
-			// Faire une boucle ici, et dire que si la valeur de i string = au tir, alors le mec peu tirer.
 			if(shootTypeTest[_currentPosArray] == "normal")
 			{
 				_shootedBall = (GameObject) Instantiate(_ballPrefab, this.transform.position, Quaternion.identity);

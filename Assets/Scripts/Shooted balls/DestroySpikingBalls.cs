@@ -18,8 +18,8 @@ public class DestroySpikingBalls : MonoBehaviour {
 
 	void Start()
 	{	
-		_chanceSpawn = ManagerDifficulty.Instance.getBonusChanceSpawn;
-		_numberSpikkedBalls =  ManagerDifficulty.Instance.getNumberSpikkedBalls;
+		_chanceSpawn = ManagerDifficulty.Instance.getBonusChanceSpawn();
+		_numberSpikkedBalls =  ManagerDifficulty.Instance.getNumberSpikkedBalls();
 		_listPowerUp = ManagerArray.Instance.getPowerUp();
 	}
 	
