@@ -18,7 +18,8 @@ public class PlayerShoot : MonoBehaviour {
 	private ShootMovement _shootSpeed;
 	private float _lastShot = 0.0f;
 
-
+	private Animator anim;
+	
 	public int getAmmoTripleShoot()
 	{
 		return _ammoTripleShoot;
@@ -43,6 +44,7 @@ public class PlayerShoot : MonoBehaviour {
 	void Awake()
 	{	
 		_ballPrefab = (GameObject) Resources.Load("Prefabs/Shooted balls/Shoot");
+		anim = GetComponent<Animator>();
 	}
 
 	// I create a new one each time that the player can shoot.
@@ -74,6 +76,7 @@ public class PlayerShoot : MonoBehaviour {
 	{
 		if (Time.time > fireRate + _lastShot)
 		{
+			anim.SetBool("isShooting", true);
 			if(shootTypeTest[_currentPosArray] == "normal")
 			{
 				_shootedBall = (GameObject) Instantiate(_ballPrefab, this.transform.position, Quaternion.identity);
@@ -106,6 +109,8 @@ public class PlayerShoot : MonoBehaviour {
 			}
 			_lastShot = Time.time;
 		}
+		else
+			anim.SetBool("isShooting", false);
+
 	}
-	
 }

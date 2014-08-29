@@ -11,8 +11,8 @@ Platform assembly: C:\Users\Kaiymu\Documents\Projets Unity\Versionning\SpaceBall
 Loading C:\Users\Kaiymu\Documents\Projets Unity\Versionning\SpaceBallBlaster\SpaceBallBlaster_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: C:\Users\Kaiymu\Documents\Projets Unity\Versionning\SpaceBallBlaster\SpaceBallBlaster_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Users\Kaiymu\Documents\Projets Unity\Versionning\SpaceBallBlaster\SpaceBallBlaster_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.035 seconds
-desktop: 1920x1080 59Hz; virtual: 3600x1080 at 0,0
+- Completed reload, in  0.037 seconds
+desktop: 1920x1080 59Hz; virtual: 3600x1080 at -1680,0
 <RI> Initializing input.
 <RI> Input initialized.
 HandleD3DDeviceLost

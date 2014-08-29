@@ -3,18 +3,16 @@ using System.Collections;
 
 public class DisplayAmmoTripleShoot : MonoBehaviour {
 
-	public GameObject playerAmmoTripleShoot;
-
-	private int _ammoTripleShoot;
-
+	public GameObject player;
+	private PlayerShoot _ammo;
 	// Use this for initialization
 	void Start () {
-
+		_ammo = player.GetComponent<PlayerShoot>();
+		//this.guiText.text = "toto";
 	}
-
-	void Update()
-	{
-		this.guiText.text = "x" + _ammoTripleShoot.ToString();
+	
+	// Update is called once per frame
+	void Update () {
+		this.guiText.text = _ammo.getAmmoTripleShoot() + "";
 	}
-
 }

@@ -10,10 +10,11 @@ GameObject:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
   - 114: {fileID: 11400000}
-  - 61: {fileID: 6100000}
   - 50: {fileID: 5000000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
+  - 95: {fileID: 9500000}
+  - 61: {fileID: 6100000}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -28,7 +29,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.14222431, y: -6.4983964, z: 0}
+  m_LocalPosition: {x: 3.06953883, y: -3.08143091, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,8 +57,22 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .810000002, y: 1.38}
+  m_Size: {x: .319999993, y: .319999993}
   m_Center: {x: 0, y: 0}
+--- !u!95 &9500000
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7b419a4b11ad28144912d13a811f3fb7, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788956655bac97541a6ef3421750dc9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 1
   minSpeed: 0
   maxSpeed: 2
 --- !u!114 &11400002
@@ -85,8 +100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   fireRate: 1
-  ammoTripleShoot: 5
-  ammoAttractShoot: 5
   shootTypeTest:
   - normal
   - tripleShoot
@@ -102,7 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea54a6f5b204bb42a143c8dd7ab1e87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _life: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -124,7 +136,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300002, guid: 61b7b4f2658984042b87c0b81b445223, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a37af963b89f7a44f9fc5837f4c0d812, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
