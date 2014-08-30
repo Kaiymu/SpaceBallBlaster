@@ -12,6 +12,13 @@ public class PlayerMovement : MonoBehaviour {
 	
 	private Vector2 _velocity;	
 
+	private bool _walkRight;
+	private bool _walkLeft;
+
+	// 0 left, 1 right, 2 idle.
+	private int _dirWalk;
+
+
 	void Start()
 	{
 		anim = GetComponent<Animator>();
@@ -20,7 +27,7 @@ public class PlayerMovement : MonoBehaviour {
 	void FixedUpdate () {
 		this.movement();
 	}
-	
+	// Différenciez le fait qu'il bouge et qu'il bouge pas :)
 	void movement()
 	{	
 		_velocity = new Vector2(Mathf.Lerp(minSpeed, maxSpeed, Time.time), 0) * speed;
@@ -28,18 +35,38 @@ public class PlayerMovement : MonoBehaviour {
 		if(ManagerInput.Instance.isMovingLeft())
 		{
 			this.transform.Translate(-_velocity * Time.deltaTime);
-			anim.SetBool("walk_left", true);
+			_walkLeft = true;
+			_dirWalk = 0;
+			anim.SetInteger("dirWalk", 2);
 		}
 		else
-			anim.SetBool("walk_left", false);
+			_walkLeft = false;
 
 		if(ManagerInput.Instance.isMovingRight())
 		{
 			this.transform.Translate(_velocity * Time.deltaTime);
-			anim.SetBool("walk_right", true);
+			_walkRight = true;
+			_dirWalk = 1;
+			anim.SetInteger("dirWalk", 2);
 		}
 		else
-			anim.SetBool("walk_right", false);
+			_walkRight = false;
+
+		anim.SetBool("walk_left", _walkLeft);
+		anim.SetBool("walk_right", _walkRight);
+
+		if(!_walkLeft && !_walkRight)
+		{
+			if(_dirWalk == 0)
+			{
+				anim.SetInteger("dirWalk", 0);
+			}
+			if(_dirWalk == 1)
+			{
+				anim.SetInteger("dirWalk", 1);
+			}
+		}
+
 	}
 	
 }
