@@ -11,10 +11,10 @@ GameObject:
   - 212: {fileID: 21200000}
   - 50: {fileID: 5000000}
   - 114: {fileID: 11400002}
-  - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400000}
   - 58: {fileID: 5800000}
+  - 114: {fileID: 11400008}
   m_Layer: 11
   m_Name: OrbIce
   m_TagString: OrbIce
@@ -29,7 +29,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.533128798, y: .695150852, z: 0}
+  m_LocalPosition: {x: .646215141, y: .309081793, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,21 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedforce: -40
   speedRotate: 100
-  directionBall: 1
---- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f06c82c1267a884da52e7780b01b53f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: -1
-  numberColorBlink: 2
-  speedColorBlink: .300000012
+  directionBall: 0
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,6 +96,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sizeBall: 0
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34de8ad265d4b0645a55cf3903fa7cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowSpeedPlayer: .100000001
+  numberColorBlink: 2
+  speedColorBlink: .300000012
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

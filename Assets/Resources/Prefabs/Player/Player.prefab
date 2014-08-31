@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11400004}
   - 95: {fileID: 9500000}
   - 61: {fileID: 6100000}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788956655bac97541a6ef3421750dc9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 3
   minSpeed: 0
   maxSpeed: 2
 --- !u!114 &11400002
@@ -104,7 +104,6 @@ MonoBehaviour:
   - normal
   - tripleShoot
   - attractShoot
-  arrayOrbs: []
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

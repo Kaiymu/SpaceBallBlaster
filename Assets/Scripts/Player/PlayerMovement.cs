@@ -4,20 +4,24 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
 			
 	public float speed;
-	public float minSpeed;
-	public float maxSpeed;
-	
+	private float _initialSpeed;
+
 	private Animator anim;
-	
+
+	// Velocity of the layer
 	private Vector2 _velocity;	
 
+	// To know where the player is walking
 	private bool _walkRight;
 	private bool _walkLeft;
 
-	// 0 left, 1 right, 2 idle.
+	// 0 left, 1 right, 2 idle. To know in wich side he stopped.
 	private int _dirWalk;
 
-
+	void Awake()
+	{
+		_initialSpeed = speed;
+	}
 	void Start()
 	{
 		anim = GetComponent<Animator>();
@@ -26,10 +30,10 @@ public class PlayerMovement : MonoBehaviour {
 	void FixedUpdate () {
 		this.movement();
 	}
-	// Différenciez le fait qu'il bouge et qu'il bouge pas :)
+
 	void movement()
 	{	
-		_velocity = new Vector2(Mathf.Lerp(minSpeed, maxSpeed, Time.time), 0) * speed;
+		_velocity = new Vector2(speed, 0);
 
 		if(ManagerInput.Instance.isMovingLeft())
 		{
@@ -51,11 +55,12 @@ public class PlayerMovement : MonoBehaviour {
 		else
 			_walkRight = false;
 
+
 		anim.SetBool("walk_left", _walkLeft);
 		anim.SetBool("walk_right", _walkRight);
 
 		if(!_walkLeft && !_walkRight)
-		{
+		{		
 			if(_dirWalk == 0)
 			{
 				anim.SetInteger("dirWalk", 0);
@@ -65,7 +70,15 @@ public class PlayerMovement : MonoBehaviour {
 				anim.SetInteger("dirWalk", 1);
 			}
 		}
-
 	}
-	
+	public void SlowPlayer(float _ammoutSlow)
+	{
+		speed = _ammoutSlow;
+		Invoke("InitialSpeed", 1.5f);
+	}
+
+	void InitialSpeed()
+	{
+		speed = _initialSpeed;
+	}
 }
