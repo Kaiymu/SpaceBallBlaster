@@ -5,16 +5,18 @@ public class PlayerShoot : MonoBehaviour {
 	
 	public float speed;
 	public float fireRate;
+	public string[] shootType;
+	
 
+	// Number of ammo for each shoot.
 	private int _ammoTripleShoot;
 	private int _ammoAttractShoot;
-	
-	public string[] shootTypeTest;
 
+	//Current pos of the arrow shoot
 	private int _currentPosArray = 0;
 
-	private Object _ballPrefab;
-	private GameObject _shootedBall;
+	private Object _arrowPrefab;
+	private GameObject _shootedArrow;
 	private ShootMovement _shootSpeed;
 	private float _lastShot = 0.0f;
 
@@ -39,11 +41,11 @@ public class PlayerShoot : MonoBehaviour {
 	{
 		_ammoAttractShoot += _ammo;
 	}
-	
+
 	// I get the ball from the Resouces folder
 	void Awake()
 	{	
-		_ballPrefab = (GameObject) Resources.Load("Prefabs/Shooted balls/Shoot");
+		_arrowPrefab = (GameObject) Resources.Load("Prefabs/Arrow/NormalArrow");
 		anim = GetComponent<Animator>();
 	}
 
@@ -55,7 +57,7 @@ public class PlayerShoot : MonoBehaviour {
 
 		if(ManagerInput.Instance.isChangingSpellRight())
 		{	_currentPosArray++;
-			if(_currentPosArray < shootTypeTest.Length)
+			if(_currentPosArray < shootType.Length)
 				Debug.Log ("");
 			else 
 				_currentPosArray = 0;
@@ -67,7 +69,7 @@ public class PlayerShoot : MonoBehaviour {
 			if(_currentPosArray >= 0)
 				Debug.Log ("");
 			else 
-				_currentPosArray = shootTypeTest.Length - 1;
+				_currentPosArray = shootType.Length - 1;
 
 		}
 	}
@@ -77,35 +79,35 @@ public class PlayerShoot : MonoBehaviour {
 		if (Time.time > fireRate + _lastShot)
 		{
 			anim.SetBool("isShooting", true);
-			if(shootTypeTest[_currentPosArray] == "normal")
+			if(shootType[_currentPosArray] == "normal")
 			{
-				_shootedBall = (GameObject) Instantiate(_ballPrefab, this.transform.position, Quaternion.identity);
-				_shootedBall.GetComponent<ShootMovement>().setSpeed(speed);
+				_shootedArrow = (GameObject) Instantiate(_arrowPrefab, this.transform.position, Quaternion.identity);
+				_shootedArrow.GetComponent<ShootMovement>().setSpeed(speed);
 			}
 
-			if(shootTypeTest[_currentPosArray] == "tripleShoot" && _ammoTripleShoot > 0)
+			if(shootType[_currentPosArray] == "tripleShoot" && _ammoTripleShoot > 0)
 			{
 				_ammoTripleShoot--;
 				for(int j = 0; j < 3; j++)
 				{
-					_shootedBall= (GameObject) Instantiate(_ballPrefab, this.transform.position, Quaternion.identity);
-					_shootedBall.GetComponent<ShootMovement>().setSpeed(speed);
-					_shootedBall.GetComponent<ShootMovement>().directionShootedBall = ShootMovement.DirectionShootedBall.Up;
+					_shootedArrow= (GameObject) Instantiate(_arrowPrefab, this.transform.position, Quaternion.identity);
+					_shootedArrow.GetComponent<ShootMovement>().setSpeed(speed);
+					_shootedArrow.GetComponent<ShootMovement>().directionShootedArrow = ShootMovement.DirectionShootedArrow.Up;
 					
 					if(j == 1)
-						_shootedBall.GetComponent<ShootMovement>().directionShootedBall = ShootMovement.DirectionShootedBall.UpRight;
+						_shootedArrow.GetComponent<ShootMovement>().directionShootedArrow = ShootMovement.DirectionShootedArrow.UpRight;
 					
 					if(j == 2)
-						_shootedBall.GetComponent<ShootMovement>().directionShootedBall = ShootMovement.DirectionShootedBall.UpLeft;
+						_shootedArrow.GetComponent<ShootMovement>().directionShootedArrow = ShootMovement.DirectionShootedArrow.UpLeft;
 				}
 			}
 
-			if(shootTypeTest[_currentPosArray] == "attractShoot" && _ammoAttractShoot > 0)
+			if(shootType[_currentPosArray] == "attractShoot" && _ammoAttractShoot > 0)
 			{
 				_ammoAttractShoot--;
-				_shootedBall = (GameObject) Instantiate(_ballPrefab, this.transform.position, Quaternion.identity);
-				_shootedBall.GetComponent<ShootMovement>().setSpeed(speed);
-				_shootedBall.AddComponent("AttractEffect");
+				_shootedArrow = (GameObject) Instantiate(_arrowPrefab, this.transform.position, Quaternion.identity);
+				_shootedArrow.GetComponent<ShootMovement>().setSpeed(speed);
+				_shootedArrow.AddComponent("AttractEffect");
 			}
 			_lastShot = Time.time;
 		}

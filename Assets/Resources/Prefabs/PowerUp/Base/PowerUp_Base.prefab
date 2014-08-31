@@ -9,10 +9,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
-  - 61: {fileID: 6100000}
   - 50: {fileID: 5000000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
+  - 61: {fileID: 6100000}
   m_Layer: 0
   m_Name: PowerUp_Attract
   m_TagString: Untagged
@@ -82,8 +82,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .651540518, y: 4.06042624, z: 0}
-  m_LocalScale: {x: .367453307, y: .367453307, z: .367453307}
+  m_LocalPosition: {x: -1.42850244, y: -.347997963, z: 0}
+  m_LocalScale: {x: .0737070516, y: .0737070292, z: .367453307}
   m_Children: []
   m_Father: {fileID: 400006}
 --- !u!4 &400002
@@ -93,8 +93,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.773133874, y: 4.25192642, z: 0}
-  m_LocalScale: {x: .366621822, y: .366621673, z: 1}
+  m_LocalPosition: {x: -1.4286679, y: -.349744856, z: 0}
+  m_LocalScale: {x: .0705615506, y: .0705614835, z: .18550761}
   m_Children: []
   m_Father: {fileID: 400006}
 --- !u!4 &400004
@@ -104,8 +104,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .64736712, y: 4.6465106, z: 0}
-  m_LocalScale: {x: .366621822, y: .366621673, z: 1}
+  m_LocalPosition: {x: -1.42819774, y: -.348725259, z: 0}
+  m_LocalScale: {x: .0697114095, y: .0705614835, z: .18550761}
   m_Children: []
   m_Father: {fileID: 400006}
 --- !u!4 &400006
@@ -176,8 +176,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1, y: 1}
-  m_Center: {x: 0, y: 0}
+  m_Size: {x: 2.55999994, y: 2.55999994}
+  m_Center: {x: -2.98023224e-07, y: -9.53674316e-07}
 --- !u!61 &6100002
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06dabcd34c3aec945a3da5f6191456bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 10
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

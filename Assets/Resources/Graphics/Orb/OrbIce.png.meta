@@ -1,9 +1,6 @@
 fileFormatVersion: 2
-guid: eb76c573971e9da4f9e3a5e0d99bb6b4
+guid: ba295fe79757bb740b1eba9d05f56e5b
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: spike-ball_0
-    21300002: spike-ball_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -27,18 +24,17 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: 1
+    aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
@@ -48,26 +44,6 @@ TextureImporter:
     textureFormat: -2
     compressionQuality: 50
   spriteSheet:
-    sprites:
-    - name: spike-ball_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 125
-        height: 125
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: spike-ball_1
-      rect:
-        serializedVersion: 2
-        x: 125
-        y: 0
-        width: 125
-        height: 125
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+    sprites: []
   spritePackingTag: 
   userData: 

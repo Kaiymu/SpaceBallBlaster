@@ -5,23 +5,23 @@ public class ShootMovement : MonoBehaviour {
 
 	private float _speed;
 
-	public enum DirectionShootedBall{Up, UpLeft, UpRight};
-	public DirectionShootedBall directionShootedBall;
+	public enum DirectionShootedArrow{Up, UpLeft, UpRight};
+	public DirectionShootedArrow directionShootedArrow;
 
 	private Vector2 _direction;
 
 	void Start()
 	{
 		_direction = Vector2.up;
-		switch(directionShootedBall)
+		switch(directionShootedArrow)
 		{
-			case DirectionShootedBall.Up : 		
+			case DirectionShootedArrow.Up : 		
 			_direction = Vector2.up;
 			break;
-			case DirectionShootedBall.UpLeft :
+			case DirectionShootedArrow.UpLeft :
 				_direction = new Vector2(-1, 1);
 			break;
-			case DirectionShootedBall.UpRight :
+			case DirectionShootedArrow.UpRight :
 				_direction = new Vector2(1, 1);	
 			break;
 		}

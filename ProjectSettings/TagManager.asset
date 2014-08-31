@@ -4,8 +4,9 @@
 TagManager:
   tags:
   - Wall
-  - SpikkedBalls
   - ShootedBalls
+  - OrbIce
+  - OrbDarkness
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -15,11 +16,11 @@ TagManager:
   Builtin Layer 5: 
   Builtin Layer 6: 
   Builtin Layer 7: 
-  User Layer 8: SpikkedBalls
-  User Layer 9: ShootedBalls
-  User Layer 10: Wall
-  User Layer 11: Player
-  User Layer 12: 
+  User Layer 8: Arrow
+  User Layer 9: Wall
+  User Layer 10: Player
+  User Layer 11: OrbIce
+  User Layer 12: OrbDarkness
   User Layer 13: 
   User Layer 14: 
   User Layer 15: 

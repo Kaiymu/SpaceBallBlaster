@@ -6,7 +6,6 @@ public class PowerUpTripleShoot : MonoBehaviour {
 	private int _ammoTripleShoot;
 
 	public delegate void AmmoTripleShoot();
-	public static event AmmoTripleShoot ammoTripleShoot;
 
 	void Start()
 	{

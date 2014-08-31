@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class DestroySpikingBalls : MonoBehaviour {
+	
+	public GameObject[] arrayOrbs;
 
 	private int _numberSpikkedBalls;
 	private int _chanceSpawn;
@@ -10,11 +12,6 @@ public class DestroySpikingBalls : MonoBehaviour {
 	private GameObject _spikedBallPrefab;
 	private GameObject _randomPowerUp;
 	private List<GameObject> _listPowerUp;
-
-	void Awake()
-	{	
-		_spikedBallPrefab = (GameObject) Resources.Load("Prefabs/Spikking Balls/SpikkingBalls");
-	} 
 
 	void Start()
 	{	
@@ -25,7 +22,7 @@ public class DestroySpikingBalls : MonoBehaviour {
 	
 	void OnCollisionEnter2D(Collision2D col)
 	{	
-		if(col.transform.tag == "SpikkedBalls")
+		if(col.transform.tag == "OrbDarkness")
 		{
 			instantiateSpikedBalls(_numberSpikkedBalls, col.gameObject);
 
@@ -40,20 +37,28 @@ public class DestroySpikingBalls : MonoBehaviour {
 			Destroy(this.gameObject);
 			Destroy(col.gameObject);
 		}
+		else if(col.transform.tag == "OrbIce")
+		{
+			ManagerArray.Instance.removeSpikkedFromArray(col.gameObject);
+			Destroy(this.gameObject);
+			Destroy(col.gameObject);
+		}
 	}
 
 	void instantiateSpikedBalls(int number, GameObject col)
 	{
 		SpikkingBallsSize.Size sizeBall = col.GetComponent<SpikkingBallsSize>().sizeBall;
 
-		// If the ball is really small, we destroy it.
+		// If the ball is really small or if it's a ice ball, we destroy it.
 		if(sizeBall == SpikkingBallsSize.Size.smallSize)
 			return;
 		else
 		{
 			for(int i = 0; i < number; i++)
 			{
-				GameObject o = (GameObject) Instantiate(_spikedBallPrefab, this.transform.position, Quaternion.identity);
+				GameObject randomOrb = arrayOrbs[Random.Range(0, 2)];
+				                     
+				GameObject o = (GameObject) Instantiate(randomOrb, this.transform.position, Quaternion.identity);
 				if(sizeBall == SpikkingBallsSize.Size.normalSize) // If it's normal, we instantiate a mid ball.
 				{
 					if(i == 0)

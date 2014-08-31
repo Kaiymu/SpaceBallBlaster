@@ -8,13 +8,13 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
-  - 58: {fileID: 5800000}
   - 114: {fileID: 11400000}
   - 50: {fileID: 5000000}
   - 212: {fileID: 21200000}
   - 114: {fileID: 11400002}
-  m_Layer: 9
-  m_Name: Shoot
+  - 61: {fileID: 6100000}
+  m_Layer: 8
+  m_Name: NormalArrow
   m_TagString: ShootedBalls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.51602399, y: -.746287942, z: 0}
+  m_LocalPosition: {x: -.891218126, y: -.0780011266, z: 0}
   m_LocalScale: {x: .404737622, y: .404737443, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -46,8 +46,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!58 &5800000
-CircleCollider2D:
+--- !u!61 &6100000
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -55,7 +55,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: 1.10000002
+  m_Size: {x: .0299999993, y: .179999992}
   m_Center: {x: 0, y: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a54aee9c7fad4409bede240737f578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionShootedBall: 0
+  directionShootedArrow: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -80,6 +80,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62f6129597bcc8428430ef22ba3f898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arrayOrbs:
+  - {fileID: 100000, guid: f7d6f3e253d3089428eb78dec87005f8, type: 2}
+  - {fileID: 100000, guid: 531f56de065a4ae4aafb3cac6b4a392c, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

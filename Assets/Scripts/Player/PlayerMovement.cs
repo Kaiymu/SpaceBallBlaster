@@ -6,8 +6,7 @@ public class PlayerMovement : MonoBehaviour {
 	public float speed;
 	public float minSpeed;
 	public float maxSpeed;
-
-	private float speedAnim = 5;
+	
 	private Animator anim;
 	
 	private Vector2 _velocity;	
