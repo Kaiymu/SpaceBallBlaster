@@ -84,9 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788956655bac97541a6ef3421750dc9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  minSpeed: 0
-  maxSpeed: 2
+  speed: 2
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,6 +102,8 @@ MonoBehaviour:
   - normal
   - tripleShoot
   - attractShoot
+  arrowPrefab: {fileID: 100000, guid: c821d7627fc604942856bc7c420f4a89, type: 2}
+  pooledAmmount: 5
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

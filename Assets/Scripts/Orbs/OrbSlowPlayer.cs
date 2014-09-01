@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SlowPlayer : MonoBehaviour {
+public class OrbSlowPlayer : MonoBehaviour {
 
 	public float slowSpeedPlayer = 0.1f;
 	public float numberColorBlink;
@@ -9,6 +9,9 @@ public class SlowPlayer : MonoBehaviour {
 	
 	void OnCollisionEnter2D(Collision2D col)
 	{
+		if(col.transform.tag == "ShootedBalls")
+			col.gameObject.SetActive(false);
+
 		if(col.transform.tag == "Player")
 		{
 			col.transform.GetComponent<PlayerMovement>().SlowPlayer(slowSpeedPlayer);

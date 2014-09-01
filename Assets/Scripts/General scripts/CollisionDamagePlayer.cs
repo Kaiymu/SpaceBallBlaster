@@ -9,6 +9,9 @@ public class CollisionDamagePlayer : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
+		if(col.transform.tag == "ShootedBalls")
+			col.gameObject.SetActive(false);
+
 		if(col.transform.tag == "Player")
 		{
 			col.transform.GetComponent<PlayerLife>().setLife(damage);

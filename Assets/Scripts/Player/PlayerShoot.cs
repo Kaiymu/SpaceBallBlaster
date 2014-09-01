@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerShoot : MonoBehaviour {
 	
 	public float speed;
 	public float fireRate;
 	public string[] shootType;
-	
+	public GameObject arrowPrefab;
 
 	// Number of ammo for each shoot.
 	private int _ammoTripleShoot;
@@ -14,11 +15,15 @@ public class PlayerShoot : MonoBehaviour {
 
 	//Current pos of the arrow shoot
 	private int _currentPosArray = 0;
-
-	private Object _arrowPrefab;
+	
 	private GameObject _shootedArrow;
-	private ShootMovement _shootSpeed;
+	private ArrowMovement _shootSpeed;
 	private float _lastShot = 0.0f;
+
+	//Pool object
+	public int pooledAmmount = 5;
+	List<GameObject> arrows;
+
 
 	private Animator anim;
 	
@@ -45,8 +50,18 @@ public class PlayerShoot : MonoBehaviour {
 	// I get the ball from the Resouces folder
 	void Awake()
 	{	
-		_arrowPrefab = (GameObject) Resources.Load("Prefabs/Arrow/NormalArrow");
 		anim = GetComponent<Animator>();
+	}
+
+	void Start()
+	{
+		arrows = new List<GameObject>();
+		for(int i = 0; i < pooledAmmount; i++)
+		{
+			GameObject o = (GameObject) Instantiate(arrowPrefab);
+			o.SetActive(false);
+			arrows.Add(o);
+		}
 	}
 
 	// I create a new one each time that the player can shoot.
@@ -81,8 +96,17 @@ public class PlayerShoot : MonoBehaviour {
 			anim.SetBool("isShooting", true);
 			if(shootType[_currentPosArray] == "normal")
 			{
-				_shootedArrow = (GameObject) Instantiate(_arrowPrefab, this.transform.position, Quaternion.identity);
-				_shootedArrow.GetComponent<ShootMovement>().setSpeed(speed);
+				for(int i = 0; i < arrows.Count; i++)
+				{
+					if(!arrows[i].activeInHierarchy)
+					{
+						arrows[i].transform.position = transform.position;
+						arrows[i].transform.rotation = Quaternion.identity;
+						arrows[i].GetComponent<ArrowMovement>().setSpeed(speed);
+						arrows[i].SetActive(true);
+						break;
+					}
+				}
 			}
 
 			if(shootType[_currentPosArray] == "tripleShoot" && _ammoTripleShoot > 0)
@@ -90,24 +114,44 @@ public class PlayerShoot : MonoBehaviour {
 				_ammoTripleShoot--;
 				for(int j = 0; j < 3; j++)
 				{
-					_shootedArrow= (GameObject) Instantiate(_arrowPrefab, this.transform.position, Quaternion.identity);
-					_shootedArrow.GetComponent<ShootMovement>().setSpeed(speed);
-					_shootedArrow.GetComponent<ShootMovement>().directionShootedArrow = ShootMovement.DirectionShootedArrow.Up;
-					
-					if(j == 1)
-						_shootedArrow.GetComponent<ShootMovement>().directionShootedArrow = ShootMovement.DirectionShootedArrow.UpRight;
-					
-					if(j == 2)
-						_shootedArrow.GetComponent<ShootMovement>().directionShootedArrow = ShootMovement.DirectionShootedArrow.UpLeft;
+					for(int i = 0; i < arrows.Count; i++)
+					{
+						if(!arrows[i].activeInHierarchy)
+						{
+							arrows[i].transform.position = transform.position;
+							arrows[i].transform.rotation = Quaternion.identity;
+							arrows[i].GetComponent<ArrowMovement>().setSpeed(speed);
+							arrows[i].GetComponent<ArrowMovement>().directionShootedArrow = ArrowMovement.DirectionShootedArrow.Up;
+						
+							if(j == 1)
+								arrows[i].GetComponent<ArrowMovement>().directionShootedArrow = ArrowMovement.DirectionShootedArrow.UpRight;
+							
+							if(j == 2)
+								arrows[i].GetComponent<ArrowMovement>().directionShootedArrow = ArrowMovement.DirectionShootedArrow.UpLeft;
+
+							arrows[i].SetActive(true);
+							break;
+						}
+					}
 				}
 			}
 
 			if(shootType[_currentPosArray] == "attractShoot" && _ammoAttractShoot > 0)
 			{
 				_ammoAttractShoot--;
-				_shootedArrow = (GameObject) Instantiate(_arrowPrefab, this.transform.position, Quaternion.identity);
-				_shootedArrow.GetComponent<ShootMovement>().setSpeed(speed);
-				_shootedArrow.AddComponent("AttractEffect");
+
+				for(int i = 0; i < arrows.Count; i++)
+				{
+					if(!arrows[i].activeInHierarchy)
+					{
+						arrows[i].transform.position = transform.position;
+						arrows[i].transform.rotation = Quaternion.identity;
+						arrows[i].GetComponent<ArrowMovement>().setSpeed(speed);
+						arrows[i].AddComponent("AttractEffect");
+						arrows[i].SetActive(true);
+						break;
+					}
+				}
 			}
 			_lastShot = Time.time;
 		}

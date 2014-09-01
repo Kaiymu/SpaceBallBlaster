@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 public class ManagerArray : MonoBehaviour {
 
-	private List<GameObject> _spikkedArray;
+	private List<GameObject> _orbArray;
 	private List<GameObject> _powerUp;
 
 
 	public static ManagerArray Instance { get; private set;}
 	void Awake()
 	{
-		_spikkedArray = new List<GameObject>();
+		_orbArray = new List<GameObject>();
 		_powerUp = new List<GameObject>();
 
 		if(Instance != null && Instance != this)
@@ -21,19 +21,19 @@ public class ManagerArray : MonoBehaviour {
 		DontDestroyOnLoad(gameObject);
 	}
 
-	public List<GameObject> getSpikkedArray()
+	public List<GameObject> getOrbArray()
 	{
-		return _spikkedArray;
+		return _orbArray;
 	}
 	
-	public void addSpikkedToArray(GameObject spikkedBall)
+	public void addOrbToArray(GameObject orb)
 	{
-		_spikkedArray.Add(spikkedBall);
+		_orbArray.Add(orb);
 	}
 
-	public void removeSpikkedFromArray(GameObject spikkedBall)
+	public void removeOrbFromArray(GameObject orb)
 	{
-		_spikkedArray.Remove(spikkedBall);
+		_orbArray.Remove(orb);
 	}
 
 	public List<GameObject> getPowerUp()

@@ -1,31 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpikkedBallBounce: MonoBehaviour 
+public class OrbBounce: MonoBehaviour 
 {
 	public float speedforce;
 	public float speedRotate;
 
-	public enum DirectionBall{UpLeft, UpRight, DownLeft, DownRight};
-	public DirectionBall directionBall;
+	public enum DirectionOrb{UpLeft, UpRight, DownLeft, DownRight};
+	public DirectionOrb directionOrb;
 
 	private Vector2 _direction;
 	private Rigidbody2D _rigidBody2D;
 
 	void Start () 
 	{	
-		switch(directionBall)
+		switch(directionOrb)
 		{
-			case DirectionBall.UpRight :
+			case DirectionOrb.UpRight :
 				_direction = new Vector2(-1, -1);
 			break;
-			case DirectionBall.UpLeft:
+			case DirectionOrb.UpLeft:
 				_direction = new Vector2(1, -1);	
 			break;
-			case DirectionBall.DownRight :
+			case DirectionOrb.DownRight :
 				_direction = new Vector2(-1, 1);	
 			break;
-			case DirectionBall.DownLeft :
+			case DirectionOrb.DownLeft :
 				_direction = new Vector2(1, 1);	
 			break;
 		}

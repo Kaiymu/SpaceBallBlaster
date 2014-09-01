@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShootMovement : MonoBehaviour {
+public class ArrowMovement : MonoBehaviour {
 
 	private float _speed;
 

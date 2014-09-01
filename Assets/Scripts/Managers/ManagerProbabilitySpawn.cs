@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ProbabilitySpawn : MonoBehaviour {
+public class ManagerProbabilitySpawn : MonoBehaviour {
 
 	private float _randomNumber;
 
-	public static ProbabilitySpawn Instance {get; private set;}
+	public static ManagerProbabilitySpawn Instance {get; private set;}
 
 	void Awake()
 	{

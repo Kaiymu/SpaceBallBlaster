@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpikkedArray : MonoBehaviour {
+public class OrbArray : MonoBehaviour {
 
 	private ManagerArray _managerArray;
 
 	void Start()
 	{
-		ManagerArray.Instance.addSpikkedToArray(this.gameObject);
+		ManagerArray.Instance.addOrbToArray(this.gameObject);
 	}
 
 }
