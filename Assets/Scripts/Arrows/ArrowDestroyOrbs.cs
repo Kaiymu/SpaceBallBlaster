@@ -21,6 +21,9 @@ public class ArrowDestroyOrbs : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
+		if(col.transform.tag == "Wall")
+			this.gameObject.SetActive(false);
+		
 		if(col.transform.tag == "OrbDarkness")
 		{
 			instantiateOrbs(_numberOrbs, col.gameObject);
@@ -62,7 +65,7 @@ public class ArrowDestroyOrbs : MonoBehaviour {
 
 					if(!randomOrb.activeInHierarchy)
 					{
-						if(sizeOrb == OrbSize.Size.midSize) // If it's normal, we instantiate a mid ball.
+						if(sizeOrb == OrbSize.Size.normalSize) // If it's normal, we instantiate a mid ball.
 						{
 							if(i == 0)
 							{
@@ -106,7 +109,7 @@ public class ArrowDestroyOrbs : MonoBehaviour {
 							
 						}	
 						
-						if(sizeOrb == OrbSize.Size.smallSize) // If it's mid, we instantiate a small ball.
+						if(sizeOrb == OrbSize.Size.midSize) // If it's mid, we instantiate a small ball.
 						{
 							// Bug de malade ici, plz
 							if(i == 0)
@@ -116,6 +119,7 @@ public class ArrowDestroyOrbs : MonoBehaviour {
 								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.UpLeft;
 								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.smallSize;
 								randomOrb.SetActive(true);
+								break;
 							}
 							
 							if(i == 1)
@@ -125,6 +129,7 @@ public class ArrowDestroyOrbs : MonoBehaviour {
 								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.UpRight;
 								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.smallSize;
 								randomOrb.SetActive(true);
+								break;
 							}
 							
 							if(i == 2)
@@ -134,6 +139,7 @@ public class ArrowDestroyOrbs : MonoBehaviour {
 								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.DownLeft;
 								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.smallSize;
 								randomOrb.SetActive(true);
+								break;
 							}
 							
 							if(i == 3)
@@ -143,6 +149,7 @@ public class ArrowDestroyOrbs : MonoBehaviour {
 								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.DownRight;
 								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.smallSize;
 								randomOrb.SetActive(true);
+								break;
 
 							}
 						}
