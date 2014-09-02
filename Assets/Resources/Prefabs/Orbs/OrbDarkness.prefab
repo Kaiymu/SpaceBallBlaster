@@ -72,7 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedforce: -40
   speedRotate: 100
-  directionBall: 1
+  directionOrb: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b789558eb400f4fb6f741cabf77fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeBall: 0
+  sizeOrb: 0
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

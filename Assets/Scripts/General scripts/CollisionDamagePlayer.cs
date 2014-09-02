@@ -9,8 +9,11 @@ public class CollisionDamagePlayer : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		if(col.transform.tag == "ShootedBalls")
+		// They're is a bug when it collide an arrow, i have to desactivate it here
+		/*
+		if(col.transform.tag == "Arrow")
 			col.gameObject.SetActive(false);
+	*/
 
 		if(col.transform.tag == "Player")
 		{

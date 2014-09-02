@@ -7,7 +7,7 @@ public class PlayerShoot : MonoBehaviour {
 	public float speed;
 	public float fireRate;
 	public string[] shootType;
-	public GameObject arrowPrefab;
+	public GameObject[] arrowPrefab;
 
 	// Number of ammo for each shoot.
 	private int _ammoTripleShoot;
@@ -22,7 +22,7 @@ public class PlayerShoot : MonoBehaviour {
 
 	//Pool object
 	public int pooledAmmount = 5;
-	List<GameObject> arrows;
+	private List<GameObject> _arrows;
 
 
 	private Animator anim;
@@ -55,12 +55,15 @@ public class PlayerShoot : MonoBehaviour {
 
 	void Start()
 	{
-		arrows = new List<GameObject>();
-		for(int i = 0; i < pooledAmmount; i++)
+		_arrows = new List<GameObject>();
+		for(int i = 0; i < arrowPrefab.Length; i++)
 		{
-			GameObject o = (GameObject) Instantiate(arrowPrefab);
-			o.SetActive(false);
-			arrows.Add(o);
+			for(int j = 0; j < pooledAmmount; j++)
+			{
+				GameObject o = (GameObject) Instantiate(arrowPrefab[i]);
+				o.SetActive(false);
+				_arrows.Add(o);
+			}
 		}
 	}
 
@@ -96,14 +99,14 @@ public class PlayerShoot : MonoBehaviour {
 			anim.SetBool("isShooting", true);
 			if(shootType[_currentPosArray] == "normal")
 			{
-				for(int i = 0; i < arrows.Count; i++)
+				for(int i = 0; i < _arrows.Count; i++)
 				{
-					if(!arrows[i].activeInHierarchy)
+					if(!_arrows[i].activeInHierarchy)
 					{
-						arrows[i].transform.position = transform.position;
-						arrows[i].transform.rotation = Quaternion.identity;
-						arrows[i].GetComponent<ArrowMovement>().setSpeed(speed);
-						arrows[i].SetActive(true);
+						_arrows[i].transform.position = transform.position;
+						_arrows[i].transform.rotation = Quaternion.identity;
+						_arrows[i].GetComponent<ArrowMovement>().setSpeed(speed);
+						_arrows[i].SetActive(true);
 						break;
 					}
 				}
@@ -114,22 +117,22 @@ public class PlayerShoot : MonoBehaviour {
 				_ammoTripleShoot--;
 				for(int j = 0; j < 3; j++)
 				{
-					for(int i = 0; i < arrows.Count; i++)
+					for(int i = 0; i < _arrows.Count; i++)
 					{
-						if(!arrows[i].activeInHierarchy)
+						if(!_arrows[i].activeInHierarchy)
 						{
-							arrows[i].transform.position = transform.position;
-							arrows[i].transform.rotation = Quaternion.identity;
-							arrows[i].GetComponent<ArrowMovement>().setSpeed(speed);
-							arrows[i].GetComponent<ArrowMovement>().directionShootedArrow = ArrowMovement.DirectionShootedArrow.Up;
+							_arrows[i].transform.position = transform.position;
+							_arrows[i].transform.rotation = Quaternion.identity;
+							_arrows[i].GetComponent<ArrowMovement>().setSpeed(speed);
+							_arrows[i].GetComponent<ArrowMovement>().directionShootedArrow = ArrowMovement.DirectionShootedArrow.Up;
 						
 							if(j == 1)
-								arrows[i].GetComponent<ArrowMovement>().directionShootedArrow = ArrowMovement.DirectionShootedArrow.UpRight;
+								_arrows[i].GetComponent<ArrowMovement>().directionShootedArrow = ArrowMovement.DirectionShootedArrow.UpRight;
 							
 							if(j == 2)
-								arrows[i].GetComponent<ArrowMovement>().directionShootedArrow = ArrowMovement.DirectionShootedArrow.UpLeft;
+								_arrows[i].GetComponent<ArrowMovement>().directionShootedArrow = ArrowMovement.DirectionShootedArrow.UpLeft;
 
-							arrows[i].SetActive(true);
+							_arrows[i].SetActive(true);
 							break;
 						}
 					}
@@ -140,15 +143,14 @@ public class PlayerShoot : MonoBehaviour {
 			{
 				_ammoAttractShoot--;
 
-				for(int i = 0; i < arrows.Count; i++)
+				for(int i = 0; i < _arrows.Count; i++)
 				{
-					if(!arrows[i].activeInHierarchy)
+					if(_arrows[i].GetComponent<ArrowAttractEffect>() && !_arrows[i].activeInHierarchy)
 					{
-						arrows[i].transform.position = transform.position;
-						arrows[i].transform.rotation = Quaternion.identity;
-						arrows[i].GetComponent<ArrowMovement>().setSpeed(speed);
-						arrows[i].AddComponent("AttractEffect");
-						arrows[i].SetActive(true);
+						_arrows[i].transform.position = transform.position;
+						_arrows[i].transform.rotation = Quaternion.identity;
+						_arrows[i].GetComponent<ArrowMovement>().setSpeed(speed);
+						_arrows[i].SetActive(true);
 						break;
 					}
 				}

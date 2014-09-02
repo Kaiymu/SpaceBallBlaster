@@ -4,56 +4,46 @@ using System.Collections.Generic;
 
 public class ArrowDestroyOrbs : MonoBehaviour {
 	
-	public GameObject[] arrayOrbs;
-
 	private int _numberOrbs;
 	private int _chanceSpawn;
 	
 	private GameObject _randomPowerUp;
 	private List<GameObject> _listPowerUp;
-
-	public int spawn = 10;
-	private List<GameObject> _orbs;
-
+	private List<GameObject> _arrayOrb;
+	
 	void Start()
 	{	
-		_orbs = new List<GameObject>();
-
-		for(int i = 0; i < arrayOrbs.Length; i++)
-		{
-			for(int j = 0; j < spawn; j++)
-			{
-				GameObject o = Instantiate(arrayOrbs[i]) as GameObject;
-				o.SetActive(false);
-				_orbs.Add(o);
-			}
-		}
+		_arrayOrb = ManagerPool.Instance.getOrb();
 		_chanceSpawn = ManagerDifficulty.Instance.getBonusChanceSpawn();
 		_numberOrbs =  ManagerDifficulty.Instance.getNumberSpikkedBalls();
 		_listPowerUp = ManagerArray.Instance.getPowerUp();
 	}
-	
-	void OnCollisionEnter2D(Collision2D col)
-	{	
+
+	void OnTriggerEnter2D(Collider2D col)
+	{
 		if(col.transform.tag == "OrbDarkness")
 		{
 			instantiateOrbs(_numberOrbs, col.gameObject);
-
+			
 			if(ManagerProbabilitySpawn.Instance.spawnGameobjects(_chanceSpawn))
 			{
 				_randomPowerUp = _listPowerUp[Random.Range(0, _listPowerUp.Count)];
 				GameObject o = (GameObject) Instantiate(_randomPowerUp, this.transform.position, Quaternion.identity);
 				o.GetComponent<PowerUpSetSpeed>().speed = 1;
 			}
+			
 			ManagerArray.Instance.removeOrbFromArray(col.gameObject);
-			Destroy(col.gameObject);
+			col.gameObject.SetActive(false);
+			this.gameObject.SetActive(false);
 		}
 		else if(col.transform.tag == "OrbIce")
 		{
 			ManagerArray.Instance.removeOrbFromArray(col.gameObject);
-			Destroy(col.gameObject);
+			col.gameObject.SetActive(false);
+			this.gameObject.SetActive(false);
 		}
 	}
+
 
 	void instantiateOrbs(int number, GameObject col)
 	{
@@ -66,61 +56,96 @@ public class ArrowDestroyOrbs : MonoBehaviour {
 		{
 			for(int i = 0; i < number; i++)
 			{
-				GameObject randomOrb = arrayOrbs[Random.Range(0, 2)];
-				                     
-				GameObject o = (GameObject) Instantiate(randomOrb, this.transform.position, Quaternion.identity);
-				if(sizeOrb == OrbSize.Size.normalSize) // If it's normal, we instantiate a mid ball.
+				for(int j = 0; j < _arrayOrb.Count; j++)
 				{
-					if(i == 0)
-					{
-						o.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.UpLeft;
-						o.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.midSize;
-					}
+					GameObject randomOrb = _arrayOrb[Random.Range(0, _arrayOrb.Count)];
 
-					if(i == 1)
+					if(!randomOrb.activeInHierarchy)
 					{
-						o.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.UpRight;
-						o.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.midSize;
-					}
+						if(sizeOrb == OrbSize.Size.midSize) // If it's normal, we instantiate a mid ball.
+						{
+							if(i == 0)
+							{
+								randomOrb.transform.position = this.transform.position;
+								randomOrb.transform.rotation = Quaternion.identity;
+								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.UpLeft;
+								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.midSize;
+								randomOrb.SetActive(true);
+								break;
+							}
+							
+							if(i == 1)
+							{
+								randomOrb.transform.position = this.transform.position;
+								randomOrb.transform.rotation = Quaternion.identity;
+								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.UpRight;
+								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.midSize;
+								randomOrb.SetActive(true);
+								break;
+							}
+							
+							if(i == 2)
+							{
+								randomOrb.transform.position = this.transform.position;
+								randomOrb.transform.rotation = Quaternion.identity;
+								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.DownLeft;
+								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.midSize;
+								randomOrb.SetActive(true);
+								break;
+							}
+							
+							if(i == 3)
+							{
+								randomOrb.transform.position = this.transform.position;
+								randomOrb.transform.rotation = Quaternion.identity;
+								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.DownRight;
+								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.midSize;
+								randomOrb.SetActive(true);
+								break;
+							}
+							
+						}	
+						
+						if(sizeOrb == OrbSize.Size.smallSize) // If it's mid, we instantiate a small ball.
+						{
+							// Bug de malade ici, plz
+							if(i == 0)
+							{
+								randomOrb.transform.position = this.transform.position;
+								randomOrb.transform.rotation = Quaternion.identity;
+								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.UpLeft;
+								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.smallSize;
+								randomOrb.SetActive(true);
+							}
+							
+							if(i == 1)
+							{
+								randomOrb.transform.position = this.transform.position;
+								randomOrb.transform.rotation = Quaternion.identity;
+								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.UpRight;
+								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.smallSize;
+								randomOrb.SetActive(true);
+							}
+							
+							if(i == 2)
+							{
+								randomOrb.transform.position = this.transform.position;
+								randomOrb.transform.rotation = Quaternion.identity;
+								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.DownLeft;
+								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.smallSize;
+								randomOrb.SetActive(true);
+							}
+							
+							if(i == 3)
+							{
+								randomOrb.transform.position = this.transform.position;
+								randomOrb.transform.rotation = Quaternion.identity;
+								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.DownRight;
+								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.smallSize;
+								randomOrb.SetActive(true);
 
-					if(i == 2)
-					{
-						o.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.DownLeft;
-						o.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.midSize;
-					}
-
-					if(i == 3)
-					{
-						o.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.DownRight;
-						o.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.midSize;
-					}
-
-				}	
-
-				else if(sizeOrb == OrbSize.Size.midSize) // If it's mid, we instantiate a small ball.
-				{
-					if(i == 0)
-					{
-						o.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.UpLeft;
-						o.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.smallSize;
-					}
-					
-					if(i == 1)
-					{
-						o.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.UpRight;
-						o.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.smallSize;
-					}
-
-					if(i == 2)
-					{
-						o.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.DownLeft;
-						o.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.smallSize;
-					}
-				
-					if(i == 3)
-					{
-						o.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.DownRight;
-						o.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.smallSize;
+							}
+						}
 					}
 				}
 			}

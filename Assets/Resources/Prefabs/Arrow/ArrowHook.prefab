@@ -8,16 +8,14 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
-  - 212: {fileID: 21200000}
-  - 114: {fileID: 11400000}
-  - 50: {fileID: 5000000}
   - 114: {fileID: 11400002}
-  - 114: {fileID: 11400004}
-  - 95: {fileID: 9500000}
+  - 50: {fileID: 5000000}
+  - 212: {fileID: 21200000}
   - 61: {fileID: 6100000}
-  m_Layer: 10
-  m_Name: Player
-  m_TagString: Player
+  - 114: {fileID: 11400004}
+  m_Layer: 14
+  m_Name: ArrowHook
+  m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,8 +27,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.06953883, y: -3.08143091, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.48318243, y: -4.68176746, z: 0}
+  m_LocalScale: {x: .404737622, y: .404737443, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!50 &5000000
@@ -39,7 +37,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mass: 500
+  m_Mass: 5.5
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 0
@@ -56,35 +54,9 @@ BoxCollider2D:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Size: {x: .319999993, y: .319999993}
+  m_IsTrigger: 1
+  m_Size: {x: .319999993, y: .319999963}
   m_Center: {x: 0, y: 0}
---- !u!95 &9500000
-Animator:
-  serializedVersion: 2
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7b419a4b11ad28144912d13a811f3fb7, type: 2}
-  m_CullingMode: 0
-  m_ApplyRootMotion: 1
-  m_AnimatePhysics: 0
-  m_HasTransformHierarchy: 1
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 788956655bac97541a6ef3421750dc9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,19 +65,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dacaae2ce6aeae4c8c6ca53a563a8ea, type: 3}
+  m_Script: {fileID: 11500000, guid: c9a54aee9c7fad4409bede240737f578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  fireRate: 1
-  shootType:
-  - normal
-  - tripleShoot
-  - attractShoot
-  arrowPrefab:
-  - {fileID: 100000, guid: c821d7627fc604942856bc7c420f4a89, type: 2}
-  - {fileID: 100000, guid: ee60d53eb45ae9d4ebf9506de4941581, type: 2}
-  pooledAmmount: 5
+  directionShootedArrow: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,9 +77,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ea54a6f5b204bb42a143c8dd7ab1e87, type: 3}
+  m_Script: {fileID: 11500000, guid: bd904ba2ea5d4d24c82b517fb6331719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strengthOfAttraction: 5
+  maxGravityDistance: 4
+  attractForce: 10
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -136,9 +102,9 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: a37af963b89f7a44f9fc5837f4c0d812, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 379061dccb900854a9376fe50fe2bacc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

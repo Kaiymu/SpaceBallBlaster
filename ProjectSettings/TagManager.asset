@@ -4,7 +4,7 @@
 TagManager:
   tags:
   - Wall
-  - ShootedBalls
+  - Arrow
   - OrbIce
   - OrbDarkness
   - 
@@ -21,8 +21,8 @@ TagManager:
   User Layer 10: Player
   User Layer 11: OrbIce
   User Layer 12: OrbDarkness
-  User Layer 13: 
-  User Layer 14: 
+  User Layer 13: OrbRandom
+  User Layer 14: ArrowHook
   User Layer 15: 
   User Layer 16: 
   User Layer 17: 
