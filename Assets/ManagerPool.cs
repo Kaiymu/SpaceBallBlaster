@@ -26,6 +26,8 @@ public class ManagerPool : MonoBehaviour {
 	}
 	
 	void Start () {
+
+
 		_orbs = new List<GameObject>();
 		
 		for(int i = 0; i < arrayOrbs.Length; i++)

@@ -73,7 +73,7 @@ public class PlayerShoot : MonoBehaviour {
 		if(ManagerInput.Instance.isShooting()) // If i press the buttons to shoot
 			Shoot();
 
-		if(ManagerInput.Instance.isChangingSpellRight())
+		if(ManagerInput.Instance.isChangingAmmoRight())
 		{	_currentPosArray++;
 			if(_currentPosArray < shootType.Length)
 				Debug.Log ("");
@@ -81,15 +81,16 @@ public class PlayerShoot : MonoBehaviour {
 				_currentPosArray = 0;
 		}
 
-		if(ManagerInput.Instance.isChangingSpellLeft())
+		if(ManagerInput.Instance.isChangingAmmoLeft())
 		{
 			_currentPosArray--;
 			if(_currentPosArray >= 0)
 				Debug.Log ("");
 			else 
 				_currentPosArray = shootType.Length - 1;
-
 		}
+
+		Debug.Log (_currentPosArray);
 	}
 
 	void Shoot()
