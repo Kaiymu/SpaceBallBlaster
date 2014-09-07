@@ -17,11 +17,13 @@ public class PlayerMovement : MonoBehaviour {
 
 	// 0 left, 1 right, 2 idle. To know in wich side he stopped.
 	private int _dirWalk;
+	
 
 	void Awake()
 	{
 		_initialSpeed = speed;
 	}
+
 	void Start()
 	{
 		anim = GetComponent<Animator>();

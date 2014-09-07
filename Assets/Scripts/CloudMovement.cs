@@ -16,6 +16,7 @@ public class CloudMovement : MonoBehaviour {
 	}
 
 	void Update () {
+
 		_x -= speedX;
 		_y -= Mathf.Sin ((speedY * Time.deltaTime) / 10) /4;
 		Vector2 velocity = new Vector2(_x, _y);

@@ -24,7 +24,8 @@ public class PlayerShoot : MonoBehaviour {
 	public int pooledAmmount = 5;
 	private List<GameObject> _arrows;
 
-
+	private bool _canShoot = true;
+	
 	private Animator anim;
 	
 	public int getAmmoTripleShoot()
@@ -45,6 +46,11 @@ public class PlayerShoot : MonoBehaviour {
 	public void setAmmoAttractShoot(int _ammo)
 	{
 		_ammoAttractShoot += _ammo;
+	}
+
+	public int getArrowType()
+	{
+		return _currentPosArray;
 	}
 
 	// I get the ball from the Resouces folder
@@ -70,27 +76,28 @@ public class PlayerShoot : MonoBehaviour {
 	// I create a new one each time that the player can shoot.
 	void Update()
 	{
-		if(ManagerInput.Instance.isShooting()) // If i press the buttons to shoot
-			Shoot();
-
-		if(ManagerInput.Instance.isChangingAmmoRight())
-		{	_currentPosArray++;
-			if(_currentPosArray < shootType.Length)
-				Debug.Log ("");
-			else 
-				_currentPosArray = 0;
-		}
-
-		if(ManagerInput.Instance.isChangingAmmoLeft())
+		if(_canShoot)
 		{
-			_currentPosArray--;
-			if(_currentPosArray >= 0)
-				Debug.Log ("");
-			else 
-				_currentPosArray = shootType.Length - 1;
-		}
+			if(ManagerInput.Instance.isShooting()) // If i press the buttons to shoot
+				Shoot();
 
-		Debug.Log (_currentPosArray);
+			if(ManagerInput.Instance.isChangingAmmoRight())
+			{	_currentPosArray++;
+				if(_currentPosArray < shootType.Length)
+					Debug.Log ("");
+				else 
+					_currentPosArray = 0;
+			}
+
+			if(ManagerInput.Instance.isChangingAmmoLeft())
+			{
+				_currentPosArray--;
+				if(_currentPosArray >= 0)
+					Debug.Log ("");
+				else 
+					_currentPosArray = shootType.Length - 1;
+			}
+		}
 	}
 
 	void Shoot()
