@@ -12,12 +12,12 @@ public class SetPositionBorderArrowType : MonoBehaviour {
 
 	void OnEnable()
 	{
-		PlayerShoot.isChangingArrow += ChangingArrow;
+		PlayerShoot.isChangingUIBorder += ChangingArrow;
 	}
 	
 	void OnDisable()
 	{
-		PlayerShoot.isChangingArrow -= ChangingArrow;
+		PlayerShoot.isChangingUIBorder -= ChangingArrow;
 	}
 
 	void Start () {

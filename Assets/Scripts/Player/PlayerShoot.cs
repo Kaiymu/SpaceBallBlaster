@@ -11,6 +11,7 @@ public class PlayerShoot : MonoBehaviour {
 
 	// Event to move the UI when the player change his arrow
 	public delegate void ChangeArrow();
+	public static event ChangeArrow isChangingUIBorder;
 	public static event ChangeArrow isChangingArrow;
 
 	// Number of ammo for each shoot.
@@ -37,9 +38,11 @@ public class PlayerShoot : MonoBehaviour {
 		return _ammoTripleShoot;
 	}
 
+	// Called in PowerUp scripts, to set the ammmout. Allow an event to trigger and display the number of arrow in the UI.
 	public void setAmmoTripleShoot(int _ammo)
 	{
 		_ammoTripleShoot += _ammo;
+		isChangingArrow();
 	}
 
 	public int getAmmoAttractShoot()
@@ -50,6 +53,7 @@ public class PlayerShoot : MonoBehaviour {
 	public void setAmmoAttractShoot(int _ammo)
 	{
 		_ammoAttractShoot += _ammo;
+		isChangingArrow();
 	}
 
 	public int getArrowType()
@@ -91,8 +95,8 @@ public class PlayerShoot : MonoBehaviour {
 					Debug.Log ("");
 				else 
 					_currentPosArray = 0;
-
 				isChangingArrow();
+				isChangingUIBorder();
 			}
 
 			if(ManagerInput.Instance.isChangingAmmoLeft())
@@ -102,8 +106,7 @@ public class PlayerShoot : MonoBehaviour {
 					Debug.Log ("");
 				else 
 					_currentPosArray = shootType.Length - 1;
-
-				isChangingArrow();
+				isChangingUIBorder();
 			}
 		}
 	}
@@ -131,12 +134,15 @@ public class PlayerShoot : MonoBehaviour {
 			if(shootType[_currentPosArray] == "tripleShoot" && _ammoTripleShoot > 0)
 			{
 				_ammoTripleShoot--;
+
 				for(int j = 0; j < 3; j++)
 				{
 					for(int i = 0; i < _arrows.Count; i++)
 					{
 						if(!_arrows[i].activeInHierarchy)
 						{
+							// An event that trigger to display the UI of the number of arrow.
+							isChangingArrow();
 							_arrows[i].transform.position = transform.position;
 							_arrows[i].transform.rotation = Quaternion.identity;
 							_arrows[i].GetComponent<ArrowMovement>().setSpeed(speed);
@@ -163,6 +169,8 @@ public class PlayerShoot : MonoBehaviour {
 				{
 					if(_arrows[i].GetComponent<ArrowAttractEffect>() && !_arrows[i].activeInHierarchy)
 					{
+						// An event that trigger to display the UI of the number of arrow.
+						isChangingArrow();
 						_arrows[i].transform.position = transform.position;
 						_arrows[i].transform.rotation = Quaternion.identity;
 						_arrows[i].GetComponent<ArrowMovement>().setSpeed(speed);

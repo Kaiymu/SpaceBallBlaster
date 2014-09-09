@@ -9,8 +9,7 @@ public class PowerUpAttract : MonoBehaviour {
 	{
 		_ammoAttractShoot = ManagerDifficulty.Instance.getAmmoAttractShoot();
 	}
-
-
+	
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		if(col.transform.tag == "Player")
