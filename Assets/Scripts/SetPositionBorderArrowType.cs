@@ -10,13 +10,27 @@ public class SetPositionBorderArrowType : MonoBehaviour {
 	private int _posArrayArrow;
 	
 
-	// Use this for initialization
-	void Start () {
-		_arrowType = player.GetComponent<PlayerShoot>();
+	void OnEnable()
+	{
+		PlayerShoot.isChangingArrow += ChangingArrow;
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	void OnDisable()
+	{
+		PlayerShoot.isChangingArrow -= ChangingArrow;
+	}
+
+	void Start () {
+		_arrowType = player.GetComponent<PlayerShoot>();
+
+		for(int i = 0; i < UIBorder.Length; i++)
+		{
+			UIBorder[i].SetActive(false);
+			UIBorder[0].SetActive(true);
+		}
+	}
+
+	void ChangingArrow () {
 
 		for(int i = 0; i < UIBorder.Length; i++)
 		{

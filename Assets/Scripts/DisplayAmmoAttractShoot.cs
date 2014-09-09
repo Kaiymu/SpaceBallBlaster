@@ -10,19 +10,29 @@ public class DisplayAmmoAttractShoot : MonoBehaviour {
 	public GameObject[] displayArrayTripleArrow;
 
 	private PlayerShoot _ammo;
+
+	void OnEnable()
+	{
+		PlayerShoot.isChangingArrow += ChangingArrow;
+	}
+
+	void OnDisable()
+	{
+		PlayerShoot.isChangingArrow -= ChangingArrow;
+	}
+
 	// Use this for initialization
 	void Start () {
 		_ammo = player.GetComponent<PlayerShoot>();
-		//this.guiText.text = "toto";
 
 		for(int i = 0; i < displayArrayHook.Length; i++)
 		{
 			displayArrayHook[i].SetActive(false);
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	void ChangingArrow()
+	{
 		for(int i = 0; i < displayArrayHook.Length; i++)
 		{
 			displayArrayHook[i].SetActive(false);

@@ -9,6 +9,10 @@ public class PlayerShoot : MonoBehaviour {
 	public string[] shootType;
 	public GameObject[] arrowPrefab;
 
+	// Event to move the UI when the player change his arrow
+	public delegate void ChangeArrow();
+	public static event ChangeArrow isChangingArrow;
+
 	// Number of ammo for each shoot.
 	private int _ammoTripleShoot;
 	private int _ammoAttractShoot;
@@ -87,6 +91,8 @@ public class PlayerShoot : MonoBehaviour {
 					Debug.Log ("");
 				else 
 					_currentPosArray = 0;
+
+				isChangingArrow();
 			}
 
 			if(ManagerInput.Instance.isChangingAmmoLeft())
@@ -96,6 +102,8 @@ public class PlayerShoot : MonoBehaviour {
 					Debug.Log ("");
 				else 
 					_currentPosArray = shootType.Length - 1;
+
+				isChangingArrow();
 			}
 		}
 	}
