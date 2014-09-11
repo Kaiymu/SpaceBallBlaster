@@ -13,7 +13,7 @@ public class ArrowAttractEffect : MonoBehaviour {
 	private float _gravityAttract;
 	private Vector2 _differencePlayerOrb;
 	
-	void Start()
+	void OnEnable()
 	{
 		_attractedFrom = ManagerArray.Instance.getOrbArray();
 	}
@@ -21,18 +21,18 @@ public class ArrowAttractEffect : MonoBehaviour {
 	// Attach automaticly to the ball if it's getting instantiated.
 	void FixedUpdate()
 	{
-		foreach(GameObject spikkedBall in _attractedFrom)
+		foreach(GameObject orbBall in _attractedFrom)
 		{
-			_distance = Vector2.Distance(spikkedBall.transform.position, transform.position);
+			_distance = Vector2.Distance(orbBall.transform.position, transform.position);
 
 			// Calculating the distance between the shooted ball and the spikked balls.
 			if(_distance <= maxGravityDistance)
 			{
-				_differencePlayerOrb = spikkedBall.transform.position - transform.position;
+				_differencePlayerOrb = orbBall.transform.position - transform.position;
 				_gravityAttract = _distance / maxGravityDistance;
 
-				// If if put _differencePlayerSpikked in negative, it repulse the balls, good to know.
-				spikkedBall.rigidbody2D.AddForce(-_differencePlayerOrb.normalized * _gravityAttract * attractForce);
+				// If if put _differencePlayerOrb in negative, it repulse the balls, good to know.
+				orbBall.rigidbody2D.AddForce(-_differencePlayerOrb.normalized * _gravityAttract * attractForce);
 			}
 
 		}

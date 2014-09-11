@@ -5,9 +5,10 @@ public class OrbArray : MonoBehaviour {
 
 	private ManagerArray _managerArray;
 
-	void Start()
+	void OnEnable()
 	{
 		ManagerArray.Instance.addOrbToArray(this.gameObject);
 	}
+	
 
 }

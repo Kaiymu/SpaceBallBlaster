@@ -6,24 +6,25 @@ public class ArrowDestroyOrbs : MonoBehaviour {
 	
 	private int _numberOrbs;
 	private int _chanceSpawn;
-	
+
 	private GameObject _randomPowerUp;
 	private List<GameObject> _listPowerUp;
 	private List<GameObject> _arrayOrb;
+	private ManagerDifficulty _managerDifficulty;
 	
-	void Start()
+	void OnEnable()
 	{	
 		_arrayOrb = ManagerPool.Instance.getOrb();
-		_chanceSpawn = ManagerDifficulty.Instance.getBonusChanceSpawn();
-		_numberOrbs =  ManagerDifficulty.Instance.getNumberSpikkedBalls();
 		_listPowerUp = ManagerArray.Instance.getPowerUp();
+	
+		_managerDifficulty = ManagerDifficulty.Instance;
+
+		_chanceSpawn = _managerDifficulty.getBonusChanceSpawn();
+		_numberOrbs  = _managerDifficulty.getNumberOrb();
 	}
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if(col.transform.tag == "Wall")
-			this.gameObject.SetActive(false);
-		
 		if(col.transform.tag == "OrbDarkness")
 		{
 			instantiateOrbs(_numberOrbs, col.gameObject);

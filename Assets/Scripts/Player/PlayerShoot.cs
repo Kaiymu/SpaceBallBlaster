@@ -61,6 +61,11 @@ public class PlayerShoot : MonoBehaviour {
 		return _currentPosArray;
 	}
 
+	public float getLastShot()
+	{
+		return _lastShot;
+	}
+
 	// I get the ball from the Resouces folder
 	void Awake()
 	{	
@@ -75,7 +80,6 @@ public class PlayerShoot : MonoBehaviour {
 			for(int j = 0; j < pooledAmmount; j++)
 			{
 				GameObject o = (GameObject) Instantiate(arrowPrefab[i]);
-				o.SetActive(false);
 				_arrows.Add(o);
 			}
 		}
@@ -112,7 +116,7 @@ public class PlayerShoot : MonoBehaviour {
 	}
 
 	void Shoot()
-	{
+	{		Debug.Log (_lastShot);
 		if (Time.time > fireRate + _lastShot)
 		{
 			anim.SetBool("isShooting", true);

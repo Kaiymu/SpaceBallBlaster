@@ -5,9 +5,9 @@ public class PlayerLife : MonoBehaviour {
 	
 	private int _life;
 
-	void Start()
+	void Awake()
 	{
-		_life = ManagerDifficulty.Instance.getPlayerLife();
+		_life = 100;
 	}
 	
 	public int getLife()

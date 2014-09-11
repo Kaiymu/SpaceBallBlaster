@@ -6,38 +6,70 @@ public class OrbBounce: MonoBehaviour
 	public float speedforce;
 	public float speedRotate;
 
+	public bool randomDirection;
 	public enum DirectionOrb{UpLeft, UpRight, DownLeft, DownRight};
 	public DirectionOrb directionOrb;
 
 	private Vector2 _direction;
 	private Rigidbody2D _rigidBody2D;
 
-	void Start () 
+	//Value to make the ball goes up / down / left / right
+	private float _randomX;
+	private float _randomY;
+
+
+	// Value to make randomly move the ball
+	private float _random;
+	private float _randomRound;
+
+
+	void OnEnable () 
 	{	
+		_randomY = randomNumber(-1, 1);
+		_randomX = randomNumber(-1, 1);
+
 		switch(directionOrb)
 		{
-			case DirectionOrb.UpRight :
-				_direction = new Vector2(-1, -1);
+		case DirectionOrb.UpRight :
+			_direction = new Vector2(-1, -1);
 			break;
-			case DirectionOrb.UpLeft:
-				_direction = new Vector2(1, -1);	
+		case DirectionOrb.UpLeft:
+			_direction = new Vector2(1, -1);	
 			break;
-			case DirectionOrb.DownRight :
-				_direction = new Vector2(-1, 1);	
+		case DirectionOrb.DownRight :
+			_direction = new Vector2(-1, 1);	
 			break;
-			case DirectionOrb.DownLeft :
-				_direction = new Vector2(1, 1);	
+		case DirectionOrb.DownLeft :
+			_direction = new Vector2(1, 1);	
 			break;
 		}
+
+		_direction = new Vector2(_randomY, _randomX);	
 
 		//get rigidBody2D component
 		_rigidBody2D = gameObject.GetComponent<Rigidbody2D>();
 		
 		//set _direction of ball adding force
-		set_direction(_direction);
+		setDirection(_direction);
+	}
+
+	private float randomNumber(float min, float max)
+	{
+		_random = Random.Range(min, max);
+		_randomRound = Mathf.Round(_random * 100f) / 100f;
+
+		if(_randomRound == 0)
+		{ 
+			_random = Random.Range(min, max);
+			_randomRound = Mathf.Round(_random * 100f) / 100f;
+
+			return _randomRound;
+		}
+		else
+			return _randomRound;
 	}
 	
-	private void set_direction(Vector2 in_direction)
+	private void setDirection(Vector2 in_direction)
 	{		
 		if(!_rigidBody2D)
 			return;
@@ -52,6 +84,7 @@ public class OrbBounce: MonoBehaviour
 		
 		//add force in the _direction the ball bounces or starts
 		_rigidBody2D.AddForce(_direction * speedforce);
+
 	}
 	
 	void OnCollisionEnter2D(Collision2D collision)
@@ -66,7 +99,7 @@ public class OrbBounce: MonoBehaviour
 		_direction = Vector3.Reflect(_direction, CollisionNormal);
 		
 		//apply new _direction adding force
-		set_direction(_direction);
+		setDirection(_direction);
 	}
 
 	void Update()

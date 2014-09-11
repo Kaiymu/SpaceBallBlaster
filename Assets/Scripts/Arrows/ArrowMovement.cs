@@ -9,22 +9,27 @@ public class ArrowMovement : MonoBehaviour {
 	public DirectionShootedArrow directionShootedArrow;
 
 	private Vector2 _direction;
+	private float _angleZ;
 
-	void Start()
+	void OnEnable()
 	{
-		_direction = Vector2.up;
 		switch(directionShootedArrow)
 		{
 			case DirectionShootedArrow.Up : 		
-			_direction = Vector2.up;
+				_direction = Vector2.up;
+				_angleZ = transform.rotation.z;
 			break;
 			case DirectionShootedArrow.UpLeft :
 				_direction = new Vector2(-1, 1);
+				_angleZ = 0.43f;
 			break;
 			case DirectionShootedArrow.UpRight :
 				_direction = new Vector2(1, 1);	
+				_angleZ = -0.43f;
 			break;
 		}
+
+		transform.localRotation = new Quaternion(transform.rotation.x, transform.rotation.y, _angleZ, transform.rotation.w);                                            
 	}
 	
 	public float getSpeed()

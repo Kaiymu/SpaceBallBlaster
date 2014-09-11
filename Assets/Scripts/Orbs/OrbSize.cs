@@ -8,7 +8,7 @@ public class OrbSize : MonoBehaviour {
 
 	private Vector3 _scaleOrb;
 
-	void Start()
+	void OnEnable()
 	{
 		switch(sizeOrb)
 		{

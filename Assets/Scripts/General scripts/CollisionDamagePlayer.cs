@@ -2,22 +2,32 @@
 using System.Collections;
 
 public class CollisionDamagePlayer : MonoBehaviour {
-
-	public int damage;
+	
 	public float numberColorBlink;
 	public float speedColorBlink;
 
+	private int _damage;
+	private OrbSize _currentSizeOrb;
+
+	void OnEnable()
+	{
+		_currentSizeOrb = this.GetComponent<OrbSize>();
+
+		if(_currentSizeOrb.sizeOrb == OrbSize.Size.normalSize)
+			_damage = ManagerDifficulty.Instance.getDamageNormalOrb();
+
+		if(_currentSizeOrb.sizeOrb == OrbSize.Size.midSize)
+			_damage = ManagerDifficulty.Instance.getDamageMidOrb();
+
+		if(_currentSizeOrb.sizeOrb == OrbSize.Size.smallSize)
+			_damage = ManagerDifficulty.Instance.getDamageSmallOrb();
+	}
+
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		// They're is a bug when it collide an arrow, i have to desactivate it here
-		/*
-		if(col.transform.tag == "Arrow")
-			col.gameObject.SetActive(false);
-	*/
-
 		if(col.transform.tag == "Player")
 		{
-			col.transform.GetComponent<PlayerLife>().setLife(damage);
+			col.transform.GetComponent<PlayerLife>().setLife(_damage);
 			GameObject player = col.transform.gameObject;
 			ManagerColor.Instance.StartBlink(player, numberColorBlink, speedColorBlink);
 		}

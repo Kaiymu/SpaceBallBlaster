@@ -6,7 +6,7 @@ public class ManagerInput : MonoBehaviour {
 	public static ManagerInput Instance {get; private set;}
 	// Keep all the gesture of the game. Really easy if i want to add other key, or a pad for exemple.
 
-	private bool touchingLeft, touchingRight, fire, changeArrowRight, changeArrowLeft;
+	private bool touchingLeft, touchingRight, fire, changeArrowRight, changeArrowLeft, pausingGame, quittingGame;
 
 	void Awake()
 	{
@@ -60,6 +60,16 @@ public class ManagerInput : MonoBehaviour {
 		changeArrowRight = true;
 	}
 
+	void isPausingGame()
+	{
+		pausingGame = true;
+	}
+
+	void isQuittingGame()
+	{
+		quittingGame = true;
+	}
+	
 	public bool isMovingLeft()
 	{
 		if(Input.GetKey("q") || touchingLeft)
@@ -111,8 +121,20 @@ public class ManagerInput : MonoBehaviour {
 
 	public bool isPausing()
 	{
-		if(Input.GetKeyDown("p"))
+		if(Input.GetKeyDown("p") || pausingGame)
+		{	pausingGame = false;
 			return true;
+		}
+		else
+			return false;
+	}
+
+	public bool isQuitting()
+	{
+		if(Input.GetKeyDown("t") || quittingGame)
+		{	quittingGame = false;
+			return true;
+		}
 		else
 			return false;
 	}

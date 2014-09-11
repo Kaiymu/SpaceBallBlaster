@@ -7,9 +7,7 @@ public class ManagerDifficulty : MonoBehaviour {
 
 	public enum Difficulty {easy, normal, hard};
 	public Difficulty difficulty;
-
-	//PlayerLife
-	private int _playerLife;
+	
 
 	// PowerUpLife, PowerUpTripleShoot, PowerUpAttract
 	private int _ammoLife;
@@ -18,7 +16,8 @@ public class ManagerDifficulty : MonoBehaviour {
 
 	// Chance spawn DestroySpikkingBalls
 	private int _bonusChanceSpawn;
-	private int _numberSpikkedBalls;
+	private int _numberOrb;
+	private int _damageNormalOrb, _damageMidOrb, _damageSmallOrb;
 	
 	void Awake()
 	{
@@ -31,37 +30,40 @@ public class ManagerDifficulty : MonoBehaviour {
 		switch(difficulty)
 		{
 			case Difficulty.easy : 
-				_playerLife = 10;
-				_ammoLife = 3;
-				_ammoTripleShoot = 5;
+				_ammoLife = 50;
+				_ammoTripleShoot = 4;
 				_ammoAttractShoot = 3;
 				_bonusChanceSpawn = 50;
-				_numberSpikkedBalls = 2;
+				_numberOrb = 2;
+				_damageNormalOrb = -20;
+				_damageMidOrb = -10;
+				_damageSmallOrb = -5;
+
 			break;
 
 			case Difficulty.normal :
-				_playerLife = 6;
-				_ammoLife = 2;
-				_ammoTripleShoot = 4;
+				_ammoLife = 30;
+				_ammoTripleShoot = 3;
 				_ammoAttractShoot = 2;
 				_bonusChanceSpawn = 33;
-				_numberSpikkedBalls = 3;
+				_numberOrb = 3;
+				_damageNormalOrb = -25;
+				_damageMidOrb = -15;
+				_damageSmallOrb = -8;
 			break;
 
 			case Difficulty.hard : 
-				_playerLife = 4;
-				_ammoLife = 1;
-				_ammoTripleShoot = 3;
+
+				_ammoLife = 20;
+				_ammoTripleShoot = 2;
 				_ammoAttractShoot = 1;
 				_bonusChanceSpawn = 25;
-				_numberSpikkedBalls = 4;
+				_numberOrb = 4;
+				_damageNormalOrb = -35;
+				_damageMidOrb = -20;
+				_damageSmallOrb = -12;
 			break;
 		}
-	}
-
-	public int getPlayerLife()
-	{
-		return _playerLife;
 	}
 
 	public int getAmmoLife()
@@ -84,8 +86,23 @@ public class ManagerDifficulty : MonoBehaviour {
 		return _bonusChanceSpawn;
 	}
 
-	public int getNumberSpikkedBalls()
+	public int getNumberOrb()
 	{
-		return _numberSpikkedBalls;
+		return _numberOrb;
+	}
+
+	public int getDamageNormalOrb()
+	{
+		return _damageNormalOrb;
+	}
+
+	public int getDamageMidOrb()
+	{
+		return _damageMidOrb;
+	}
+
+	public int getDamageSmallOrb()
+	{
+		return _damageSmallOrb;
 	}
 }
