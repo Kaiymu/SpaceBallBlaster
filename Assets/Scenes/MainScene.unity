@@ -6227,6 +6227,10 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1810450074}
+    - target: {fileID: 11400004, guid: 6148df31a7764204ab2f7b347fbfc97c, type: 2}
+      propertyPath: mFill
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6148df31a7764204ab2f7b347fbfc97c, type: 2}
   m_RootGameObject: {fileID: 1452584299}
@@ -10341,7 +10345,7 @@ MonoBehaviour:
   mBG: {fileID: 1452584303}
   mFG: {fileID: 1427655140}
   mValue: 1
-  mFill: 1
+  mFill: 0
   numberOfSteps: 0
   onChange: []
   foreground: {fileID: 0}

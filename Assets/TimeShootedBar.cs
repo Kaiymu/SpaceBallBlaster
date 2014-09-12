@@ -7,15 +7,15 @@ public class TimeShootedBar : MonoBehaviour {
 	public GameObject player;
 
 	private UISlider _UITimeShooted;
-	private float _lastShot;
+	private PlayerShoot _lastShot;
 
 	void Start () {
 		_UITimeShooted = this.gameObject.GetComponent<UISlider>();
-		_lastShot      = player.GetComponent<PlayerShoot>().getLastShot();
+		_lastShot      = player.GetComponent<PlayerShoot>();
 	}
 
 	void Update()
 	{
-		//Debug.Log (_lastShot);
+		_UITimeShooted.value = _lastShot.getLastShot();
 	}
 }

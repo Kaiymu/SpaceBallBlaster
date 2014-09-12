@@ -32,6 +32,10 @@ public class PlayerShoot : MonoBehaviour {
 	private bool _canShoot = true;
 	
 	private Animator anim;
+
+	private float test = 0f;
+	private float timeShoot = 1f;
+	private float tempValue;
 	
 	public int getAmmoTripleShoot()
 	{
@@ -63,9 +67,9 @@ public class PlayerShoot : MonoBehaviour {
 
 	public float getLastShot()
 	{
-		return _lastShot;
+		return tempValue;
 	}
-
+	
 	// I get the ball from the Resouces folder
 	void Awake()
 	{	
@@ -88,6 +92,7 @@ public class PlayerShoot : MonoBehaviour {
 	// I create a new one each time that the player can shoot.
 	void Update()
 	{
+		tempValue = test += Time.deltaTime;
 		if(_canShoot)
 		{
 			if(ManagerInput.Instance.isShooting()) // If i press the buttons to shoot
@@ -116,9 +121,9 @@ public class PlayerShoot : MonoBehaviour {
 	}
 
 	void Shoot()
-	{		Debug.Log (_lastShot);
-		if (Time.time > fireRate + _lastShot)
-		{
+	{	
+		if (timeShoot < tempValue)
+		{   test = 0f;
 			anim.SetBool("isShooting", true);
 			if(shootType[_currentPosArray] == "normal")
 			{
@@ -183,7 +188,6 @@ public class PlayerShoot : MonoBehaviour {
 					}
 				}
 			}
-			_lastShot = Time.time;
 		}
 		else
 			anim.SetBool("isShooting", false);
