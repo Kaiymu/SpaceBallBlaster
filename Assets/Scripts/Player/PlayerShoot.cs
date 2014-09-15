@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class PlayerShoot : MonoBehaviour {
 	
 	public float speed;
-	public float fireRate;
 	public string[] shootType;
 	public GameObject[] arrowPrefab;
 
@@ -23,7 +22,6 @@ public class PlayerShoot : MonoBehaviour {
 	
 	private GameObject _shootedArrow;
 	private ArrowMovement _shootSpeed;
-	private float _lastShot = 0.0f;
 
 	//Pool object
 	public int pooledAmmount = 5;
@@ -33,10 +31,9 @@ public class PlayerShoot : MonoBehaviour {
 	
 	private Animator anim;
 
-	private float test = 0f;
-	private float timeShoot = 1f;
-	private float tempValue;
-	
+	private float timeShoot = 0f;
+	private float fireRate = 1f;
+
 	public int getAmmoTripleShoot()
 	{
 		return _ammoTripleShoot;
@@ -67,7 +64,7 @@ public class PlayerShoot : MonoBehaviour {
 
 	public float getLastShot()
 	{
-		return tempValue;
+		return timeShoot;
 	}
 	
 	// I get the ball from the Resouces folder
@@ -92,7 +89,9 @@ public class PlayerShoot : MonoBehaviour {
 	// I create a new one each time that the player can shoot.
 	void Update()
 	{
-		tempValue = test += Time.deltaTime;
+		// To know when the player can shoot.
+		timeShoot += Time.deltaTime;
+
 		if(_canShoot)
 		{
 			if(ManagerInput.Instance.isShooting()) // If i press the buttons to shoot
@@ -122,8 +121,9 @@ public class PlayerShoot : MonoBehaviour {
 
 	void Shoot()
 	{	
-		if (timeShoot < tempValue)
-		{   test = 0f;
+		if (fireRate < timeShoot)
+		{   
+			timeShoot = 0f;
 			anim.SetBool("isShooting", true);
 			if(shootType[_currentPosArray] == "normal")
 			{
@@ -158,7 +158,9 @@ public class PlayerShoot : MonoBehaviour {
 							_arrows[i].GetComponent<ArrowMovement>().directionShootedArrow = ArrowMovement.DirectionShootedArrow.Up;
 						
 							if(j == 1)
+							{	
 								_arrows[i].GetComponent<ArrowMovement>().directionShootedArrow = ArrowMovement.DirectionShootedArrow.UpRight;
+							}
 							
 							if(j == 2)
 								_arrows[i].GetComponent<ArrowMovement>().directionShootedArrow = ArrowMovement.DirectionShootedArrow.UpLeft;
@@ -191,6 +193,5 @@ public class PlayerShoot : MonoBehaviour {
 		}
 		else
 			anim.SetBool("isShooting", false);
-
 	}
 }

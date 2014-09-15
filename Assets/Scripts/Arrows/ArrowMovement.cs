@@ -20,11 +20,11 @@ public class ArrowMovement : MonoBehaviour {
 				_angleZ = transform.rotation.z;
 			break;
 			case DirectionShootedArrow.UpLeft :
-				_direction = new Vector2(-1, 1);
+				_direction = new Vector2(0, 1);
 				_angleZ = 0.43f;
 			break;
 			case DirectionShootedArrow.UpRight :
-				_direction = new Vector2(1, 1);	
+				_direction = new Vector2(0, 1);	
 				_angleZ = -0.43f;
 			break;
 		}

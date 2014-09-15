@@ -92,9 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd904ba2ea5d4d24c82b517fb6331719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strengthOfAttraction: 5
-  maxGravityDistance: 4
-  attractForce: 10
+  strengthOfAttraction: 10
+  maxGravityDistance: 5
+  attractForce: 20
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
