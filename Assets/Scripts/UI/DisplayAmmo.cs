@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class DisplayAmmo : MonoBehaviour {
-	
+
+	// Display a number of gameobject corresponding of the number of ammo that last to the player, needs to be put in a NGUI componet
 	public GameObject player;
 
 	// To display the numbers of arrows left for the player

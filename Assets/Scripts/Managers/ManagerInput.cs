@@ -6,7 +6,7 @@ public class ManagerInput : MonoBehaviour {
 	public static ManagerInput Instance {get; private set;}
 	// Keep all the gesture of the game. Really easy if i want to add other key, or a pad for exemple.
 
-	private bool touchingLeft, touchingRight, fire, changeArrowRight, changeArrowLeft, pausingGame, quittingGame;
+	private bool touchingLeft, touchingRight, fire, changeArrowRight, changeArrowLeft, pausingGame, quittingGame, restartingLevel, goingBackToMainMenu, goingNextLevel;
 
 	void Awake()
 	{
@@ -69,6 +69,21 @@ public class ManagerInput : MonoBehaviour {
 	{
 		quittingGame = true;
 	}
+
+	void isRestartingLevel()
+	{
+		restartingLevel = true;
+	}
+
+	void isGoingBackToMainMenu()
+	{
+		goingBackToMainMenu = true;
+	}
+
+	void isGoingNextLevel()
+	{
+		goingNextLevel = true;
+	}
 	
 	public bool isMovingLeft()
 	{
@@ -122,7 +137,8 @@ public class ManagerInput : MonoBehaviour {
 	public bool isPausing()
 	{
 		if(Input.GetKeyDown("p") || pausingGame)
-		{	pausingGame = false;
+		{	
+			pausingGame = false;
 			return true;
 		}
 		else
@@ -132,10 +148,44 @@ public class ManagerInput : MonoBehaviour {
 	public bool isQuitting()
 	{
 		if(Input.GetKeyDown("t") || quittingGame)
-		{	quittingGame = false;
+		{	
+			quittingGame = false;
 			return true;
 		}
 		else
+			return false;
+	}
+
+	public bool isRestartingCurrentLevel()
+	{
+		if(restartingLevel)
+		{	
+			restartingLevel = false;
+			return true;
+		}
+		else 
+			return false;
+	}
+
+	public bool backToMainMenu()
+	{
+		if(goingBackToMainMenu)
+		{	
+			goingBackToMainMenu = false;
+			return true;
+		}
+		else 
+			return false;
+	}
+
+	public bool nextLevel()
+	{
+		if(goingNextLevel)
+		{	
+			goingNextLevel = false;
+			return true;
+		}
+		else 
 			return false;
 	}
 }

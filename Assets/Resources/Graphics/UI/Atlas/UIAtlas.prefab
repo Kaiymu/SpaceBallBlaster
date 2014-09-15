@@ -40,6 +40,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 35fc866dc66a99d4b8ab63c68fcba0b4, type: 2}
   mSprites:
+  - name: arrow
+    x: 301
+    y: 480
+    width: 15
+    height: 32
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 9
+    paddingRight: 8
+    paddingTop: 0
+    paddingBottom: 0
   - name: UI_button
     x: 0
     y: 380

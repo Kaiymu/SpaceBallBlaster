@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ActiveStartObject : MonoBehaviour {
 
+	// A script to active the orbs in the beginning of the game.
 	public GameObject[] objectToActive;
 
 	void Start () {

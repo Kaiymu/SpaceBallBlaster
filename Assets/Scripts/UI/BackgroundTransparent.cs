@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BackgroundTransparent : MonoBehaviour {
 
+	// Make the black background become visible when the game in the victory / game over / menu state
 	public Color startColorBackground;
 	public Color endColorBackground;
 
