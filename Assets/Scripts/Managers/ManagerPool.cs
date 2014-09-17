@@ -6,7 +6,7 @@ public class ManagerPool : MonoBehaviour {
 	
 	public static ManagerPool Instance { get; private set;}
 	
-	public GameObject[] arrayOrbs;
+	private GameObject arrayOrbs;
 	public int spawn = 10;
 
 	private List<GameObject> _orbs;
@@ -27,16 +27,19 @@ public class ManagerPool : MonoBehaviour {
 	
 	void Start () {
 
-
-		_orbs = new List<GameObject>();
-		
-		for(int i = 0; i < arrayOrbs.Length; i++)
+		if(!this.GetComponent<isOnGame>().IsInGame())
 		{
-			for(int j = 0; j < spawn; j++)
+			arrayOrbs = GameObject.FindGameObjectWithTag("GiveAllObjectsToManagers").GetComponent<GiveAllObjectsToManagers>().arrayOrbsStart;
+			_orbs = new List<GameObject>();
+			
+			for(int i = 0; i < arrayOrbs.transform.childCount; i++)
 			{
-				GameObject o = Instantiate(arrayOrbs[i]) as GameObject;
-				o.SetActive(false);
-				_orbs.Add(o);
+				for(int j = 0; j < spawn; j++)
+				{
+					GameObject o = Instantiate(arrayOrbs.transform.GetChild(i).gameObject) as GameObject;
+					o.SetActive(false);
+					_orbs.Add(o);
+				}
 			}
 		}
 	}

@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/************************************************************************************************
+* On the power up triple shoot gameobject
+** If the player collides it, it gives him "_ammoTripleShoot" arrows, wich is defined by the game difficulty
+************************************************************************************************/
+
 public class PowerUpTripleShoot : MonoBehaviour {
 
 	private int _ammoTripleShoot;

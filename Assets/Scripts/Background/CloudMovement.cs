@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CloudMovement : MonoBehaviour {
+/************************************************************************************************
+* On the cloud Gameobject
+**  Make the cloud move up and down to make a wind effect
+************************************************************************************************/
 
+public class CloudMovement : MonoBehaviour {
+	
 	public float speedX = 0.001f;
 	public float speedY = 1.0f;
 

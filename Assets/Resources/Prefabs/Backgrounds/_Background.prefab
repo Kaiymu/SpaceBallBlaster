@@ -45,7 +45,7 @@ GameObject:
   - 212: {fileID: 21200004}
   - 61: {fileID: 6100000}
   m_Layer: 9
-  m_Name: BottomWall
+  m_Name: 1_BottomWall
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ GameObject:
   - 212: {fileID: 21200008}
   - 61: {fileID: 6100002}
   m_Layer: 9
-  m_Name: RightWall
+  m_Name: 3_RightWall
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ GameObject:
   - 212: {fileID: 21200010}
   - 61: {fileID: 6100004}
   m_Layer: 9
-  m_Name: TopWall
+  m_Name: 0_TopWall
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,7 +127,7 @@ GameObject:
   - 212: {fileID: 21200012}
   - 61: {fileID: 6100006}
   m_Layer: 9
-  m_Name: LeftWall
+  m_Name: 2_LeftWall
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

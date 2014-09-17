@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/************************************************************************************************
+* On the power up attract gameobject
+**  If the player collides it, it gives him "_ammoAttractShoot" arrow, wich is defined by the game difficulty
+************************************************************************************************/
+
 public class PowerUpAttract : MonoBehaviour {
 
 	private int _ammoAttractShoot;

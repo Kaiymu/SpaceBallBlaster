@@ -11,10 +11,10 @@ GameObject:
   - 212: {fileID: 21200000}
   - 50: {fileID: 5000000}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
   - 58: {fileID: 5800000}
+  - 114: {fileID: 11400002}
   m_Layer: 12
   m_Name: OrbDarkness
   m_TagString: OrbDarkness
@@ -169,12 +169,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f06c82c1267a884da52e7780b01b53f, type: 3}
+  m_Script: {fileID: 11500000, guid: c99c76a7a2331054cb9483ba54567a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: -1
   numberColorBlink: 2
-  speedColorBlink: .300000012
+  speedColorBlink: .5
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

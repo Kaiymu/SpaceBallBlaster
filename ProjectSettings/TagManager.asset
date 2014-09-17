@@ -7,6 +7,10 @@ TagManager:
   - Arrow
   - OrbIce
   - OrbDarkness
+  - Manager
+  - OrbContainer
+  - GiveAllObjectsToManagers
+  - ManagerLevels
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

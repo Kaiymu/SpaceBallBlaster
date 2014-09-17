@@ -6,9 +6,9 @@ public class ManagerArray : MonoBehaviour {
 
 	private List<GameObject> _orbArray;
 	private List<GameObject> _powerUp;
-
-
+	
 	public static ManagerArray Instance { get; private set;}
+
 	void Awake()
 	{
 		_orbArray = new List<GameObject>();

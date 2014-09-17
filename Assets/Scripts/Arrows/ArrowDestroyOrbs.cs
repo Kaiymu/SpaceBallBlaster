@@ -2,6 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/************************************************************************************************
+ * On the arrow GameObject
+**  Put back the orb object in the object pool, and instantiate new object in function of the game difficulty.
+************************************************************************************************/
+
 public class ArrowDestroyOrbs : MonoBehaviour {
 	
 	private int _numberOrbs;
@@ -11,11 +16,14 @@ public class ArrowDestroyOrbs : MonoBehaviour {
 	private List<GameObject> _listPowerUp;
 	private List<GameObject> _arrayOrb;
 	private ManagerDifficulty _managerDifficulty;
+
+	private ManagerArray _managerArray;
 	
 	void OnEnable()
 	{	
 		_arrayOrb = ManagerPool.Instance.getOrb();
-		_listPowerUp = ManagerArray.Instance.getPowerUp();
+		_managerArray = ManagerArray.Instance;
+		_listPowerUp = _managerArray.getPowerUp();
 	
 		_managerDifficulty = ManagerDifficulty.Instance;
 
@@ -28,7 +36,7 @@ public class ArrowDestroyOrbs : MonoBehaviour {
 		if(col.transform.tag == "OrbDarkness")
 		{
 			instantiateOrbs(_numberOrbs, col.gameObject);
-			
+
 			if(ManagerProbabilitySpawn.Instance.spawnGameobjects(_chanceSpawn))
 			{
 				_randomPowerUp = _listPowerUp[Random.Range(0, _listPowerUp.Count)];
@@ -36,13 +44,13 @@ public class ArrowDestroyOrbs : MonoBehaviour {
 				o.GetComponent<PowerUpSetSpeed>().speed = 1;
 			}
 			
-			ManagerArray.Instance.removeOrbFromArray(col.gameObject);
+			_managerArray.removeOrbFromArray(col.gameObject);
 			col.gameObject.SetActive(false);
 			this.gameObject.SetActive(false);
 		}
 		else if(col.transform.tag == "OrbIce")
 		{
-			ManagerArray.Instance.removeOrbFromArray(col.gameObject);
+			_managerArray.removeOrbFromArray(col.gameObject);
 			col.gameObject.SetActive(false);
 			this.gameObject.SetActive(false);
 		}

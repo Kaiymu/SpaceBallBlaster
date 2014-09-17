@@ -2,6 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/************************************************************************************************
+* On the arrow GameObject
+** Allow to attract every orb on his way
+************************************************************************************************/
+
 public class ArrowAttractEffect : MonoBehaviour {
 
 	public float strengthOfAttraction = 5.0f;
@@ -12,7 +17,7 @@ public class ArrowAttractEffect : MonoBehaviour {
 	private float _distance;
 	private float _gravityAttract;
 	private Vector2 _differencePlayerOrb;
-	
+
 	void OnEnable()
 	{
 		_attractedFrom = ManagerArray.Instance.getOrbArray();

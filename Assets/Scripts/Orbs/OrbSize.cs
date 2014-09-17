@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/************************************************************************************************
+* On every orb
+**  Set the size of the orb when it's getting instantiate.
+************************************************************************************************/
+
 public class OrbSize : MonoBehaviour {
 
 	public enum Size{normalSize, midSize, smallSize};

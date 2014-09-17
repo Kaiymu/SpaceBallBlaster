@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/************************************************************************************************
+* On the player
+**  A moving component, and animator component, from left to right.
+************************************************************************************************/
+
 public class PlayerMovement : MonoBehaviour {
 			
 	public float speed;

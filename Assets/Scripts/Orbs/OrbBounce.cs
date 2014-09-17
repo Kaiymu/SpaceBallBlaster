@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/************************************************************************************************
+* On every orb
+**  Make the orb spin on itself, and bounce on the wall of the game. 
+** You can set a direction by instantiate it with DirecetionOrb
+************************************************************************************************/
+
 public class OrbBounce: MonoBehaviour 
 {
 	public float speedforce;

@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ArrowAutoDestroyWall : MonoBehaviour {
+/************************************************************************************************
+*On the arrow GameObject
+** Put back the arrow in the object pool when it collide with a wall
+************************************************************************************************/
 
-	// A script to attach on each arrow, put back the arrow in the object pool when it's collide with it. 
+public class ArrowAutoDestroyWall : MonoBehaviour {
+	
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		if(col.transform.tag == "Wall")

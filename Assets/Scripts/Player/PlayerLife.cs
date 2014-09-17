@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/************************************************************************************************
+* On thep player
+**  Getter / setter to know how much life the player has.
+************************************************************************************************/
+
 public class PlayerLife : MonoBehaviour {
 	
 	private int _life;

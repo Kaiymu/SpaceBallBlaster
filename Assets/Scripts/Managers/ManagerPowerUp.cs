@@ -7,28 +7,34 @@ public class ManagerPowerUp : MonoBehaviour {
 	
 	public static ManagerPowerUp Instance { get; private set;}
 
-	public string powerUpBasePath = "Prefabs/PowerUp/base/";
-
 	private GameObject _powerUpBase;
 	private Transform _childPowerUpBase;
 
+	private ManagerArray _managerArray;
+
 	void Awake()
 	{
-		_powerUpBase = (GameObject) Resources.Load(powerUpBasePath+"PowerUp_Base");
-
-		// Looping throught my parent gameobject to retrieve all the childs.
-		for(int i = 0; i < _powerUpBase.transform.childCount; i++)
-		{
-			_childPowerUpBase = _powerUpBase.transform.GetChild(i);
-			ManagerArray.Instance.addPowerUpToArray(_childPowerUpBase.gameObject);
-		}
-
 		if(Instance != null && Instance != this)
 			Destroy(gameObject);
 
-
 		Instance = this;
 		DontDestroyOnLoad(gameObject);
+	}
+
+	void OnEnable()
+	{	
+		if(!this.GetComponent<isOnGame>().IsInGame())
+		{
+			_managerArray = this.GetComponent<ManagerArray>();
+			_powerUpBase = GameObject.FindGameObjectWithTag("GiveAllObjectsToManagers").GetComponent<GiveAllObjectsToManagers>().powerUpContainer;
+			// Looping throught my parent gameobject to retrieve all the childs.
+			for(int i = 0; i < _powerUpBase.transform.childCount; i++)
+			{
+				_childPowerUpBase = _powerUpBase.transform.GetChild(i);
+				
+				_managerArray.addPowerUpToArray(_childPowerUpBase.gameObject);
+			}
+		}
 	}
 
 	public void movementPowerUps(GameObject me, float speed)

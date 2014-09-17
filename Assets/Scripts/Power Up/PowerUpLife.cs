@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/************************************************************************************************
+* On the power up life gameobject
+** If the player collides it, it gives him "_bonusLife" life, wich is defined by the game difficulty
+************************************************************************************************/
+
 public class PowerUpLife : MonoBehaviour {
 
 	private int _bonusLife;

@@ -6,7 +6,7 @@ public class ManagerColor : MonoBehaviour {
 	private Color _blink;
 
 	public static ManagerColor Instance { get; private set;}
-
+	
 	void Awake()
 	{
 		if(Instance != null && Instance != this)

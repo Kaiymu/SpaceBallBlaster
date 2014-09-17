@@ -2,6 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/************************************************************************************************
+* On the player
+**  A script that allows the player to shoot pooled arrows, and change his ammo.
+************************************************************************************************/
+
 public class PlayerShoot : MonoBehaviour {
 	
 	public float speed;
@@ -17,7 +22,7 @@ public class PlayerShoot : MonoBehaviour {
 	private int _ammoTripleShoot;
 	private int _ammoAttractShoot;
 
-	//Current pos of the arrow shoot
+	//Current position of the ammo in the array.
 	private int _currentPosArray = 0;
 	
 	private GameObject _shootedArrow;
@@ -30,9 +35,13 @@ public class PlayerShoot : MonoBehaviour {
 	private bool _canShoot = true;
 	
 	private Animator anim;
-
+	
 	private float timeShoot = 0f;
 	private float fireRate = 1f;
+
+	// Temporary value to know if the number of ammo exced 4 or not.
+	private float tempAmmoTripleShoot;
+	private float tempAmmoAttractShoot;
 
 	public int getAmmoTripleShoot()
 	{
@@ -42,7 +51,13 @@ public class PlayerShoot : MonoBehaviour {
 	// Called in PowerUp scripts, to set the ammmout. Allow an event to trigger and display the number of arrow in the UI.
 	public void setAmmoTripleShoot(int _ammo)
 	{
-		_ammoTripleShoot += _ammo;
+		tempAmmoTripleShoot = _ammoTripleShoot + _ammo;
+
+		if(tempAmmoTripleShoot >= 4)
+			_ammoTripleShoot = 4;
+		else
+			_ammoTripleShoot += _ammo;
+
 		isChangingArrow();
 	}
 
@@ -53,7 +68,13 @@ public class PlayerShoot : MonoBehaviour {
 	
 	public void setAmmoAttractShoot(int _ammo)
 	{
-		_ammoAttractShoot += _ammo;
+		tempAmmoAttractShoot = _ammoAttractShoot + _ammo;
+
+		if(tempAmmoAttractShoot >= 4)
+			_ammoAttractShoot = 4;
+		else
+			_ammoAttractShoot += _ammo;
+
 		isChangingArrow();
 	}
 

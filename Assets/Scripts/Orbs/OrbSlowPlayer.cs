@@ -1,11 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/************************************************************************************************
+* Only on the ice Orb
+**  Make the player slows and blink in a blue color.
+************************************************************************************************/
+
 public class OrbSlowPlayer : MonoBehaviour {
 
 	public float slowSpeedPlayer = 0.1f;
 	public float numberColorBlink;
 	public float speedColorBlink;
+	private ManagerColor _managerColor;
+
+	void OnEnable()
+	{
+		_managerColor = ManagerColor.Instance;
+	}
 	
 	void OnCollisionEnter2D(Collision2D col)
 	{
@@ -19,7 +30,7 @@ public class OrbSlowPlayer : MonoBehaviour {
 		{
 			col.transform.GetComponent<PlayerMovement>().SlowPlayer(slowSpeedPlayer);
 			GameObject player = col.transform.gameObject;
-			ManagerColor.Instance.SlowFade(player, numberColorBlink, speedColorBlink);
+			_managerColor.SlowFade(player, numberColorBlink, speedColorBlink);
 		}
 	}
 }

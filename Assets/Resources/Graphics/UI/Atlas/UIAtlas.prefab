@@ -42,7 +42,7 @@ MonoBehaviour:
   mSprites:
   - name: arrow
     x: 301
-    y: 480
+    y: 440
     width: 15
     height: 32
     borderLeft: 0
@@ -66,6 +66,19 @@ MonoBehaviour:
     paddingRight: 1
     paddingTop: 2
     paddingBottom: 1
+  - name: UI_button_list_levels
+    x: 301
+    y: 473
+    width: 38
+    height: 39
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: UI_button_simple
     x: 0
     y: 309
