@@ -15,7 +15,7 @@ public class OrbSlowPlayer : MonoBehaviour {
 
 	void OnEnable()
 	{
-		_managerColor = ManagerColor.Instance;
+		_managerColor = _managerColor = GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerColor>();
 	}
 	
 	void OnCollisionEnter2D(Collision2D col)

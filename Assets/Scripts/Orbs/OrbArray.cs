@@ -8,8 +8,10 @@ using System.Collections;
 
 public class OrbArray : MonoBehaviour {
 
+	private ManagerArray _managerArray;
 	void OnEnable()
 	{
-		ManagerArray.Instance.addOrbToArray(this.gameObject);
+		_managerArray = GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerArray>();
+		_managerArray.addOrbToArray(this.gameObject);
 	}
 }

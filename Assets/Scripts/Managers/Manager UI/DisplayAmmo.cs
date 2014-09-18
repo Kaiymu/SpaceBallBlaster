@@ -38,28 +38,25 @@ public class DisplayAmmo : MonoBehaviour {
 
 	void ChangingArrow()
 	{
-		if(!this.GetComponent<isOnGame>().IsInGame())
+		// Make all disapear, and just let appear the number of ammo that the player have for each ammo.
+		for(int i = 0; i < _displayArrayHook.transform.childCount; i++)
 		{
-			// Make all disapear, and just let appear the number of ammo that the player have for each ammo.
-			for(int i = 0; i < _displayArrayHook.transform.childCount; i++)
-			{
-				_displayArrayHook.transform.GetChild(i).gameObject.SetActive(false);
-			}
+			_displayArrayHook.transform.GetChild(i).gameObject.SetActive(false);
+		}
 
-			for(int i = 0; i < _ammo.getAmmoAttractShoot(); i++)
-			{
-				_displayArrayHook.transform.GetChild(i).gameObject.SetActive(true);
-			}
+		for(int i = 0; i < _ammo.getAmmoAttractShoot(); i++)
+		{
+			_displayArrayHook.transform.GetChild(i).gameObject.SetActive(true);
+		}
 
-			for(int i = 0; i < _displayArrayTripleArrow.transform.childCount; i++)
-			{
-				_displayArrayTripleArrow.transform.GetChild(i).gameObject.SetActive(false);
-			}
-			
-			for(int i = 0; i < _ammo.getAmmoTripleShoot(); i++)
-			{
-				_displayArrayTripleArrow.transform.GetChild(i).gameObject.SetActive(true);
-			}
+		for(int i = 0; i < _displayArrayTripleArrow.transform.childCount; i++)
+		{
+			_displayArrayTripleArrow.transform.GetChild(i).gameObject.SetActive(false);
+		}
+		
+		for(int i = 0; i < _ammo.getAmmoTripleShoot(); i++)
+		{
+			_displayArrayTripleArrow.transform.GetChild(i).gameObject.SetActive(true);
 		}
 	}
 }

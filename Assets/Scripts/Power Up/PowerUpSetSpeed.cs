@@ -9,10 +9,15 @@ using System.Collections;
 public class PowerUpSetSpeed : MonoBehaviour {
 
 	public float speed;
-	
+
+	private ManagerPowerUp _managerPowerUp;
+
+	void OnEnable()
+	{
+		_managerPowerUp = GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerPowerUp>();
+	}
 	void FixedUpdate()
 	{
-
-		ManagerPowerUp.Instance.movementPowerUps(this.gameObject, speed);
+		_managerPowerUp.movementPowerUps(this.gameObject, speed);
 	}
 }

@@ -6,18 +6,12 @@ public class ActiveStartObject : MonoBehaviour {
 	// A script to active the orbs in the beginning of the game.
 	private GameObject _objectToActive;
 
-	void OnEnable () {
+	public void OnGlobalEnable () {
+		_objectToActive = GameObject.FindGameObjectWithTag("OrbContainer");
 
-		if(!this.GetComponent<isOnGame>().IsInGame())
+		for(int i = 0; i < _objectToActive.transform.childCount; i++)
 		{
-			_objectToActive = GameObject.FindGameObjectWithTag("OrbContainer");
-
-			for(int i = 0; i < _objectToActive.transform.childCount; i++)
-			{
-				_objectToActive.transform.GetChild(i).gameObject.SetActive(true);
-			}
+			_objectToActive.transform.GetChild(i).gameObject.SetActive(true);
 		}
-
 	}
-
 }

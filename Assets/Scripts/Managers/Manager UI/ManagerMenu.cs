@@ -21,6 +21,7 @@ public class ManagerMenu : MonoBehaviour {
 
 	// If the game over menu / win menu is displayed, we don't have the pause menu. 
 	private bool _canPause = true;
+	private bool _displayMenuOnce = true;
 
 	private ManagerArray _managerArray;
 	private GiveAllObjectsToManagers _giveAllObjectsToManagers;
@@ -33,6 +34,7 @@ public class ManagerMenu : MonoBehaviour {
 		_elementMenuToShow = _giveAllObjectsToManagers.menuGame;
 		_elementGameOverToShow = _giveAllObjectsToManagers.menuLoose;
 		_elementWinToShow = _giveAllObjectsToManagers.menuWin;
+		_displayMenuOnce = true;
 	}
 
 	void Update () 
@@ -79,7 +81,8 @@ public class ManagerMenu : MonoBehaviour {
 	void EndGame()
 	{
 		if(_managerArray.getOrbArray().Count == 0){
-			if(OnEndLevel != null){
+			if(OnEndLevel != null && _displayMenuOnce){
+				_displayMenuOnce = false;
 				Time.timeScale = 0;
 				_canPause = false;
 				OnEndLevel();

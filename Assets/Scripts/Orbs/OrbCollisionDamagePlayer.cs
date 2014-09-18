@@ -17,7 +17,7 @@ public class OrbCollisionDamagePlayer : MonoBehaviour {
 
 	void OnEnable()
 	{
-		_managerColor = ManagerColor.Instance;
+		_managerColor = GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerColor>();
 		_currentSizeOrb = this.GetComponent<OrbSize>();
 
 		if(_currentSizeOrb.sizeOrb == OrbSize.Size.normalSize)

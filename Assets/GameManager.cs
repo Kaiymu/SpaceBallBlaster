@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class isOnGame : MonoBehaviour {
+public class GameManager : MonoBehaviour {
 	
 	private bool _isInGame;
 
@@ -10,14 +10,15 @@ public class isOnGame : MonoBehaviour {
 		return _isInGame;
 	}
 
-	void Update () {
-		//detectIsInGame();
+	void Awake()
+	{
+		DontDestroyOnLoad(gameObject);
 	}
 
 	// When the level change
 	void OnLevelWasLoaded(int level) {
 
-		// In game
+		// In game make a component that call all the others
 		if(GameObject.FindGameObjectWithTag("GiveAllObjectsToManagers") != null)
 		{
 			this.GetComponent<ManagerColor>().enabled = true;

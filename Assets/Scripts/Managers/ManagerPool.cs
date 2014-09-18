@@ -3,9 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class ManagerPool : MonoBehaviour {
-	
-	public static ManagerPool Instance { get; private set;}
-	
+
 	private GameObject arrayOrbs;
 	public int spawn = 10;
 
@@ -16,30 +14,17 @@ public class ManagerPool : MonoBehaviour {
 		return _orbs;
 	}
 
-	void Awake()
-	{
-		if(Instance != null && Instance != this)
-			Destroy(gameObject);
+	void OnEnable () {
+		arrayOrbs = GameObject.FindGameObjectWithTag("GiveAllObjectsToManagers").GetComponent<GiveAllObjectsToManagers>().arrayOrbsStart;
+		_orbs = new List<GameObject>();
 		
-		Instance = this;
-		DontDestroyOnLoad(gameObject);
-	}
-	
-	void Start () {
-
-		if(!this.GetComponent<isOnGame>().IsInGame())
+		for(int i = 0; i < arrayOrbs.transform.childCount; i++)
 		{
-			arrayOrbs = GameObject.FindGameObjectWithTag("GiveAllObjectsToManagers").GetComponent<GiveAllObjectsToManagers>().arrayOrbsStart;
-			_orbs = new List<GameObject>();
-			
-			for(int i = 0; i < arrayOrbs.transform.childCount; i++)
+			for(int j = 0; j < spawn; j++)
 			{
-				for(int j = 0; j < spawn; j++)
-				{
-					GameObject o = Instantiate(arrayOrbs.transform.GetChild(i).gameObject) as GameObject;
-					o.SetActive(false);
-					_orbs.Add(o);
-				}
+				GameObject o = Instantiate(arrayOrbs.transform.GetChild(i).gameObject) as GameObject;
+				o.SetActive(false);
+				_orbs.Add(o);
 			}
 		}
 	}

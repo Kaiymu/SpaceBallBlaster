@@ -6,19 +6,14 @@ public class ManagerArray : MonoBehaviour {
 
 	private List<GameObject> _orbArray;
 	private List<GameObject> _powerUp;
-	
-	public static ManagerArray Instance { get; private set;}
 
-	void Awake()
+	void OnEnable()
 	{
 		_orbArray = new List<GameObject>();
 		_powerUp = new List<GameObject>();
 
-		if(Instance != null && Instance != this)
-			Destroy(gameObject);
-
-		Instance = this;
-		DontDestroyOnLoad(gameObject);
+		this.gameObject.GetComponent<ManagerPowerUp>().OnGlobalEnable();
+		this.gameObject.GetComponent<ActiveStartObject>().OnGlobalEnable();
 	}
 
 	public List<GameObject> getOrbArray()

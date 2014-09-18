@@ -563,6 +563,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 4b39acf8bc04e10479688e5caf08248e, type: 2}
+    - target: {fileID: 9500004, guid: a8d15c51f85c46d4b9f794d64d7f16b3, type: 2}
+      propertyPath: m_CullingMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a8d15c51f85c46d4b9f794d64d7f16b3, type: 2}
   m_RootGameObject: {fileID: 200063768}
@@ -773,7 +777,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1369162909}
   m_GameObject: {fileID: 1323582440}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 526b6b90517b316498c98ac84ac1c2aa, type: 3}
   m_Name: 
@@ -1017,6 +1021,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: ec5175fb6dc0b724aa75e3330e8cb43b, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec5175fb6dc0b724aa75e3330e8cb43b, type: 2}
   m_RootGameObject: {fileID: 1323582440}
@@ -1243,7 +1251,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b9fe8084d77d00f46a59644bdcb7a23a, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1

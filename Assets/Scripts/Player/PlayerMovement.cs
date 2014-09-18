@@ -26,11 +26,13 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Awake()
 	{
+		Debug.Log ("Working Awake ... Once");
 		_initialSpeed = speed;
 	}
 
 	void Start()
 	{
+		Debug.Log ("Working start ... Once");
 		anim = GetComponent<Animator>();
 	}
 

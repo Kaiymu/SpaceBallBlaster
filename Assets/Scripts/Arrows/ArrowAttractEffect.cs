@@ -18,9 +18,12 @@ public class ArrowAttractEffect : MonoBehaviour {
 	private float _gravityAttract;
 	private Vector2 _differencePlayerOrb;
 
+	private ManagerArray _managerArray;
+
 	void OnEnable()
 	{
-		_attractedFrom = ManagerArray.Instance.getOrbArray();
+		_managerArray = GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerArray>();
+		_attractedFrom = _managerArray.getOrbArray();
 	}
 
 	// Attach automaticly to the ball if it's getting instantiated.

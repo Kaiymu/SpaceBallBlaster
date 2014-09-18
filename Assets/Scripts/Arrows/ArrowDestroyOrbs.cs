@@ -18,11 +18,13 @@ public class ArrowDestroyOrbs : MonoBehaviour {
 	private ManagerDifficulty _managerDifficulty;
 
 	private ManagerArray _managerArray;
-	
+	private ManagerProbabilitySpawn _managerProbabilitySpawn;
+
 	void OnEnable()
 	{	
-		_arrayOrb = ManagerPool.Instance.getOrb();
-		_managerArray = ManagerArray.Instance;
+		_arrayOrb = GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerPool>().getOrb();
+		_managerArray = GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerArray>();
+		_managerProbabilitySpawn = GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerProbabilitySpawn>();
 		_listPowerUp = _managerArray.getPowerUp();
 	
 		_managerDifficulty = ManagerDifficulty.Instance;
@@ -37,7 +39,7 @@ public class ArrowDestroyOrbs : MonoBehaviour {
 		{
 			instantiateOrbs(_numberOrbs, col.gameObject);
 
-			if(ManagerProbabilitySpawn.Instance.spawnGameobjects(_chanceSpawn))
+			if(_managerProbabilitySpawn.spawnGameobjects(_chanceSpawn))
 			{
 				_randomPowerUp = _listPowerUp[Random.Range(0, _listPowerUp.Count)];
 				GameObject o = (GameObject) Instantiate(_randomPowerUp, this.transform.position, Quaternion.identity);
