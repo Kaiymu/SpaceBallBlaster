@@ -27,4 +27,6 @@ public class GiveAllObjectsToManagers : MonoBehaviour {
 	// Used in SetPositionBorderArrowType, to make the object move to show the current arrow the players uses.
 	public GameObject showCurrentAmmo;
 
+	private GameObject[] _showCurrentAmmo;
+	
 }

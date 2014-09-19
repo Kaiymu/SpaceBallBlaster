@@ -14,20 +14,22 @@ public class OrbCollisionDamagePlayer : MonoBehaviour {
 	private int _damage;
 	private OrbSize _currentSizeOrb;
 	private ManagerColor _managerColor;
+	private ManagerDifficulty _managerDifficulty;
 
 	void OnEnable()
 	{
 		_managerColor = GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerColor>();
+		_managerDifficulty = GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerDifficulty>();
 		_currentSizeOrb = this.GetComponent<OrbSize>();
 
 		if(_currentSizeOrb.sizeOrb == OrbSize.Size.normalSize)
-			_damage = ManagerDifficulty.Instance.getDamageNormalOrb();
+			_damage = _managerDifficulty.getDamageNormalOrb();
 
 		if(_currentSizeOrb.sizeOrb == OrbSize.Size.midSize)
-			_damage = ManagerDifficulty.Instance.getDamageMidOrb();
+			_damage = _managerDifficulty.getDamageMidOrb();
 
 		if(_currentSizeOrb.sizeOrb == OrbSize.Size.smallSize)
-			_damage = ManagerDifficulty.Instance.getDamageSmallOrb();
+			_damage = _managerDifficulty.getDamageSmallOrb();
 	}
 
 	void OnCollisionEnter2D(Collision2D col)

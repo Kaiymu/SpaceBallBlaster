@@ -117,7 +117,6 @@ public class PlayerShoot : MonoBehaviour {
 		{
 			if(ManagerInput.Instance.isShooting()) // If i press the buttons to shoot
 				Shoot();
-
 			if(ManagerInput.Instance.isChangingAmmoRight())
 			{	_currentPosArray++;
 				if(_currentPosArray < shootType.Length)

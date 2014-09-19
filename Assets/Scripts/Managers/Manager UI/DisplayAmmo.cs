@@ -3,8 +3,8 @@ using System.Collections;
 
 public class DisplayAmmo : MonoBehaviour {
 	// To display the numbers of arrows left for the player
-	private GameObject _displayArrayHook;
-	private GameObject _displayArrayTripleArrow;
+	private GameObject[] _displayArrayHook;
+	private GameObject[] _displayArrayTripleArrow;
 	
 	private PlayerShoot _ammo;
 	private GiveAllObjectsToManagers _giveAllObjectsToManagers;
@@ -16,18 +16,19 @@ public class DisplayAmmo : MonoBehaviour {
 		PlayerShoot.isChangingArrow += ChangingArrow;
 	
 		_giveAllObjectsToManagers = GameObject.FindGameObjectWithTag("GiveAllObjectsToManagers").GetComponent<GiveAllObjectsToManagers>();
-		_displayArrayHook = _giveAllObjectsToManagers.UIArrayArrowHook;
-		_displayArrayTripleArrow = _giveAllObjectsToManagers.UIArrayArrowTriple;
+		_displayArrayHook = this.GetComponent<SortGameObjectsChildrenByName>().sortArrayFromName(_giveAllObjectsToManagers.UIArrayArrowHook);
+		_displayArrayTripleArrow = this.GetComponent<SortGameObjectsChildrenByName>().sortArrayFromName(_giveAllObjectsToManagers.UIArrayArrowTriple);
+
 		_ammo = _giveAllObjectsToManagers.player.GetComponent<PlayerShoot>();
 		
-		for(int i = 0; i < _displayArrayHook.transform.childCount; i++)
+		for(int i = 0; i < _displayArrayHook.Length; i++)
 		{
-			_displayArrayHook.transform.GetChild(i).gameObject.SetActive(false);
+			_displayArrayHook[i].gameObject.SetActive(false);
 		}
 		
-		for(int i = 0; i < _displayArrayTripleArrow.transform.childCount; i++)
+		for(int i = 0; i < _displayArrayTripleArrow.Length; i++)
 		{
-			_displayArrayTripleArrow.transform.GetChild(i).gameObject.SetActive(false);
+			_displayArrayTripleArrow[i].gameObject.SetActive(false);
 		}
 	}
 
@@ -39,24 +40,24 @@ public class DisplayAmmo : MonoBehaviour {
 	void ChangingArrow()
 	{
 		// Make all disapear, and just let appear the number of ammo that the player have for each ammo.
-		for(int i = 0; i < _displayArrayHook.transform.childCount; i++)
+		for(int i = 0; i < _displayArrayHook.Length; i++)
 		{
-			_displayArrayHook.transform.GetChild(i).gameObject.SetActive(false);
+			_displayArrayHook[i].gameObject.SetActive(false);
 		}
 
 		for(int i = 0; i < _ammo.getAmmoAttractShoot(); i++)
 		{
-			_displayArrayHook.transform.GetChild(i).gameObject.SetActive(true);
+			_displayArrayHook[i].gameObject.SetActive(true);
 		}
 
-		for(int i = 0; i < _displayArrayTripleArrow.transform.childCount; i++)
+		for(int i = 0; i < _displayArrayTripleArrow.Length; i++)
 		{
-			_displayArrayTripleArrow.transform.GetChild(i).gameObject.SetActive(false);
+			_displayArrayTripleArrow[i].gameObject.SetActive(false);
 		}
 		
 		for(int i = 0; i < _ammo.getAmmoTripleShoot(); i++)
 		{
-			_displayArrayTripleArrow.transform.GetChild(i).gameObject.SetActive(true);
+			_displayArrayTripleArrow[i].gameObject.SetActive(true);
 		}
 	}
 }

@@ -27,9 +27,4 @@ public class ManagerLevels : MonoBehaviour {
 		Time.timeScale = 1;
 		Application.LoadLevel(gameObjectLevel.name);
 	}
-
-	void Update()
-	{
-		Debug.Log (Time.timeScale);
-	}
 }
