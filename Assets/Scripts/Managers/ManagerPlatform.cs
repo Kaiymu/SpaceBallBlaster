@@ -9,8 +9,11 @@ public class ManagerPlatform : MonoBehaviour {
 	
 	private GameObject[] buttonsToHide;
 
-	void OnEnable () {
+	// Called in game Manager, to call every scripts at the right time.
+	public void OnGlobalEnable () {
+
 		buttonsToHide = GameObject.FindGameObjectWithTag("GiveAllObjectsToManagers").GetComponent<GiveAllObjectsToManagers>().phoneButtonsToHide;
+
 		#if UNITY_STANDALONE_WIN
 			for(int i = 0; i < buttonsToHide.Length; i++)
 			{

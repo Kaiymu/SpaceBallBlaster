@@ -12,7 +12,7 @@ public class SetPositionBorderArrowType : MonoBehaviour {
 
 	private bool _isInMenu;
 
-	void OnEnable()
+	public void OnGlobalEnable()
 	{
 		PlayerShoot.isChangingUIBorder += ChangingArrow;
 		_giveAllObjectsToManagers = GameObject.FindGameObjectWithTag("GiveAllObjectsToManagers").GetComponent<GiveAllObjectsToManagers>();
@@ -25,7 +25,6 @@ public class SetPositionBorderArrowType : MonoBehaviour {
 			_UIBorder[0].gameObject.SetActive(true);
 		}
 	}
-	
 
 	void OnDisable()
 	{

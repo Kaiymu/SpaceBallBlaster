@@ -11,7 +11,7 @@ public class DisplayAmmo : MonoBehaviour {
 
 	private bool _isInMenu;
 
-	void OnEnable()
+	public void OnGlobalEnable()
 	{
 		PlayerShoot.isChangingArrow += ChangingArrow;
 	

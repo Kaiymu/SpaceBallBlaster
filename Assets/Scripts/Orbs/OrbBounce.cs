@@ -13,8 +13,6 @@ public class OrbBounce: MonoBehaviour
 	public float speedRotate;
 
 	public bool randomDirection;
-	public enum DirectionOrb{UpLeft, UpRight, DownLeft, DownRight};
-	public DirectionOrb directionOrb;
 
 	private Vector2 _direction;
 	private Rigidbody2D _rigidBody2D;
@@ -33,22 +31,6 @@ public class OrbBounce: MonoBehaviour
 	{	
 		_randomY = randomNumber(-1, 1);
 		_randomX = randomNumber(-1, 1);
-
-		switch(directionOrb)
-		{
-		case DirectionOrb.UpRight :
-			_direction = new Vector2(-1, -1);
-			break;
-		case DirectionOrb.UpLeft:
-			_direction = new Vector2(1, -1);	
-			break;
-		case DirectionOrb.DownRight :
-			_direction = new Vector2(-1, 1);	
-			break;
-		case DirectionOrb.DownLeft :
-			_direction = new Vector2(1, 1);	
-			break;
-		}
 
 		_direction = new Vector2(_randomY, _randomX);	
 

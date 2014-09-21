@@ -14,7 +14,7 @@ public class ManagerPool : MonoBehaviour {
 		return _orbs;
 	}
 
-	void OnEnable () {
+	public void OnGlobalEnable () {
 		arrayOrbs = GameObject.FindGameObjectWithTag("GiveAllObjectsToManagers").GetComponent<GiveAllObjectsToManagers>().poolOrbs;
 		_orbs = new List<GameObject>();
 		

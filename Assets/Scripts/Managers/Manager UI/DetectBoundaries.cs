@@ -6,7 +6,7 @@ public class DetectBoundaries : MonoBehaviour {
 	private GameObject _giveAllObjectsToManagers;
 	private Vector3[] _positionsWall;
 
-	void OnEnable () {
+	public void OnGlobalEnable() {
 
 		_positionsWall = new Vector3[4];
 		_positionsWall[0] = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.nearClipPlane));

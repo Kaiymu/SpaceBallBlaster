@@ -7,13 +7,10 @@ public class ManagerArray : MonoBehaviour {
 	private List<GameObject> _orbArray;
 	private List<GameObject> _powerUp;
 
-	void OnEnable()
+	public void OnGlobalEnable()
 	{
 		_orbArray = new List<GameObject>();
 		_powerUp = new List<GameObject>();
-
-		this.gameObject.GetComponent<ManagerPowerUp>().OnGlobalEnable();
-		this.gameObject.GetComponent<ActiveStartObject>().OnGlobalEnable();
 	}
 
 	public List<GameObject> getOrbArray()

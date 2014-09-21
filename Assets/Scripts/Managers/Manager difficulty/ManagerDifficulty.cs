@@ -7,7 +7,6 @@ public class ManagerDifficulty : MonoBehaviour {
 
 	public enum Difficulty {easy, normal, hard};
 	public Difficulty difficulty;
-	
 
 	// PowerUpLife, PowerUpTripleShoot, PowerUpAttract
 	private int _ammoLife;

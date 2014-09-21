@@ -78,91 +78,20 @@ public class ArrowDestroyOrbs : MonoBehaviour {
 					{
 						if(sizeOrb == OrbSize.Size.normalSize) // If it's normal, we instantiate a mid ball.
 						{
-							if(i == 0)
-							{
-								randomOrb.transform.position = this.transform.position;
-								randomOrb.transform.rotation = Quaternion.identity;
-								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.UpLeft;
-								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.midSize;
-								randomOrb.SetActive(true);
-								break;
-							}
-							
-							if(i == 1)
-							{
-								randomOrb.transform.position = this.transform.position;
-								randomOrb.transform.rotation = Quaternion.identity;
-								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.UpRight;
-								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.midSize;
-								randomOrb.SetActive(true);
-								break;
-							}
-							
-							if(i == 2)
-							{
-								randomOrb.transform.position = this.transform.position;
-								randomOrb.transform.rotation = Quaternion.identity;
-								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.DownLeft;
-								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.midSize;
-								randomOrb.SetActive(true);
-								break;
-							}
-							
-							if(i == 3)
-							{
-								randomOrb.transform.position = this.transform.position;
-								randomOrb.transform.rotation = Quaternion.identity;
-								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.DownRight;
-								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.midSize;
-								randomOrb.SetActive(true);
-								break;
-							}
-							
+							randomOrb.transform.position = this.transform.position;
+							randomOrb.transform.rotation = Quaternion.identity;
+							randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.midSize;
+							randomOrb.SetActive(true);
+							break;
 						}	
 						
 						if(sizeOrb == OrbSize.Size.midSize) // If it's mid, we instantiate a small ball.
 						{
-							// Bug de malade ici, plz
-							if(i == 0)
-							{
-								randomOrb.transform.position = this.transform.position;
-								randomOrb.transform.rotation = Quaternion.identity;
-								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.UpLeft;
-								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.smallSize;
-								randomOrb.SetActive(true);
-								break;
-							}
-							
-							if(i == 1)
-							{
-								randomOrb.transform.position = this.transform.position;
-								randomOrb.transform.rotation = Quaternion.identity;
-								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.UpRight;
-								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.smallSize;
-								randomOrb.SetActive(true);
-								break;
-							}
-							
-							if(i == 2)
-							{
-								randomOrb.transform.position = this.transform.position;
-								randomOrb.transform.rotation = Quaternion.identity;
-								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.DownLeft;
-								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.smallSize;
-								randomOrb.SetActive(true);
-								break;
-							}
-							
-							if(i == 3)
-							{
-								randomOrb.transform.position = this.transform.position;
-								randomOrb.transform.rotation = Quaternion.identity;
-								randomOrb.GetComponent<OrbBounce>().directionOrb = OrbBounce.DirectionOrb.DownRight;
-								randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.smallSize;
-								randomOrb.SetActive(true);
-								break;
-
-							}
+							randomOrb.transform.position = this.transform.position;
+							randomOrb.transform.rotation = Quaternion.identity;
+							randomOrb.GetComponent<OrbSize>().sizeOrb = OrbSize.Size.smallSize;
+							randomOrb.SetActive(true);
+							break;
 						}
 					}
 				}
