@@ -5,21 +5,9 @@ public class ManagerInput : MonoBehaviour {
 
 	public static ManagerInput Instance {get; private set;}
 	// Keep all the gesture of the game. Really easy if i want to add other key, or a pad for exemple.
-
+	
 	private bool touchingLeft, touchingRight, fire, changeArrowRight, changeArrowLeft, pausingGame, quittingGame, restartingLevel, goingNextLevel, goingMainMenu;
-
-	void Awake()
-	{
-		if(Instance != null && Instance != this)
-		{
-			Destroy(gameObject);
-		}
-
-		Instance = this;
-
-		DontDestroyOnLoad(gameObject);
-	}
-
+	
 	void isTouchingLeft()
 	{
 		touchingLeft = true;
@@ -44,7 +32,7 @@ public class ManagerInput : MonoBehaviour {
 	{
 		fire = true;
 	}
-	
+
 	void isRealeasingFire()
 	{
 		fire = false;
@@ -84,6 +72,16 @@ public class ManagerInput : MonoBehaviour {
 	{
 		goingMainMenu = true;
 	}
+
+	void Update()
+	{
+		isTestLeft();
+	}
+
+	private bool isTestLeft()
+	{
+		return true;
+	}
 	
 	public bool isMovingLeft()
 	{
@@ -91,7 +89,6 @@ public class ManagerInput : MonoBehaviour {
 			return true;
 		else
 			return false;
-
 	}
 
 	public bool isMovingRight()

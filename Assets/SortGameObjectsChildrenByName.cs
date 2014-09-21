@@ -9,6 +9,7 @@ public class SortGameObjectsChildrenByName : MonoBehaviour {
 	{
 		GameObject[] _arrayToSort = new GameObject[childArrayToSort.transform.childCount];
 		GameObject o;
+
 		for (int i = 0; i < childArrayToSort.transform.childCount; i++)
 		{
 			o = childArrayToSort.transform.GetChild(i).gameObject;

@@ -82,6 +82,7 @@ public class CustomUIButtonMessage : MonoBehaviour
 		}
 		else
 		{
+
 			target.SendMessage(functionName, gameObject, SendMessageOptions.DontRequireReceiver);
 		}
 	}

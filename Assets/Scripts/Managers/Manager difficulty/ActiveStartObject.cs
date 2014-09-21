@@ -7,6 +7,7 @@ public class ActiveStartObject : MonoBehaviour {
 	private GameObject _objectToActive;
 
 	public void OnGlobalEnable () {
+
 		_objectToActive = GameObject.FindGameObjectWithTag("OrbContainer");
 
 		for(int i = 0; i < _objectToActive.transform.childCount; i++)

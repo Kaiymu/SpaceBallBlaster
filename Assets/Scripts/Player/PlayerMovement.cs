@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	// 0 left, 1 right, 2 idle. To know in wich side he stopped.
 	private int _dirWalk;
+	private ManagerInput _managerInput;
 	
 
 	void Awake()
@@ -31,6 +32,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Start()
 	{
+		_managerInput = GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerInput>();
 		anim = GetComponent<Animator>();
 	}
 
@@ -42,7 +44,7 @@ public class PlayerMovement : MonoBehaviour {
 	{	
 		_velocity = new Vector2(speed, 0);
 
-		if(ManagerInput.Instance.isMovingLeft())
+		if(_managerInput.isMovingLeft())
 		{
 			this.transform.Translate(-_velocity * Time.deltaTime);
 			_walkLeft = true;
@@ -52,7 +54,7 @@ public class PlayerMovement : MonoBehaviour {
 		else
 			_walkLeft = false;
 
-		if(ManagerInput.Instance.isMovingRight())
+		if(_managerInput.isMovingRight())
 		{
 			this.transform.Translate(_velocity * Time.deltaTime);
 			_walkRight = true;

@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour {
 			this.GetComponent<DisplayAmmo>().enabled = true;
 			this.GetComponent<SetPositionBorderArrowType>().enabled = true;
 			this.GetComponent<ManagerArray>().enabled = true;
-			this.GetComponent<ManagerInput>().enabled = true;
 		}
 		else // In main menu / levels selection
 		{
@@ -49,7 +48,6 @@ public class GameManager : MonoBehaviour {
 			this.GetComponent<DisplayAmmo>().enabled = false;
 			this.GetComponent<SetPositionBorderArrowType>().enabled = false;
 			this.GetComponent<ManagerArray>().enabled = false;
-			this.GetComponent<ManagerInput>().enabled = false;
 		}
 	}
 }

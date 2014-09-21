@@ -8,8 +8,11 @@ public class GiveAllObjectsToManagers : MonoBehaviour {
 	// Used in ManagerPlatform, The array of buttons that need to be hided in Windows / PC.
 	public GameObject[] phoneButtonsToHide;
 	
-	// Used in ManagerPool, The array of orbs in the beggining of the game. 
+	// Used in SetActive, The array of orbs in the beggining of the game to active.
 	public GameObject arrayOrbsStart;
+
+	// Used ManagerPool to instantiate the orbs.
+	public GameObject poolOrbs;
 
 	// Used in ManagerMenu, the menu that are show when the game is paused / lost / win.
 	public GameObject menuGame;
@@ -27,6 +30,4 @@ public class GiveAllObjectsToManagers : MonoBehaviour {
 	// Used in SetPositionBorderArrowType, to make the object move to show the current arrow the players uses.
 	public GameObject showCurrentAmmo;
 
-	private GameObject[] _showCurrentAmmo;
-	
 }

@@ -9,6 +9,7 @@ using System.Collections;
 public class OrbArray : MonoBehaviour {
 
 	private ManagerArray _managerArray;
+
 	void OnEnable()
 	{
 		_managerArray = GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerArray>();

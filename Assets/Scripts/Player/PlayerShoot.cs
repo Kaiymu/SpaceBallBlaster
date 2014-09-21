@@ -43,6 +43,8 @@ public class PlayerShoot : MonoBehaviour {
 	private float tempAmmoTripleShoot;
 	private float tempAmmoAttractShoot;
 
+	private ManagerInput _managerInput;
+
 	public int getAmmoTripleShoot()
 	{
 		return _ammoTripleShoot;
@@ -91,6 +93,7 @@ public class PlayerShoot : MonoBehaviour {
 	// I get the ball from the Resouces folder
 	void Awake()
 	{	
+		_managerInput = GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerInput>();
 		anim = GetComponent<Animator>();
 	}
 
@@ -115,9 +118,9 @@ public class PlayerShoot : MonoBehaviour {
 
 		if(_canShoot)
 		{
-			if(ManagerInput.Instance.isShooting()) // If i press the buttons to shoot
+			if(_managerInput.isShooting()) // If i press the buttons to shoot
 				Shoot();
-			if(ManagerInput.Instance.isChangingAmmoRight())
+			if(_managerInput.isChangingAmmoRight())
 			{	_currentPosArray++;
 				if(_currentPosArray < shootType.Length)
 					Debug.Log ("");
@@ -127,7 +130,7 @@ public class PlayerShoot : MonoBehaviour {
 				isChangingUIBorder();
 			}
 
-			if(ManagerInput.Instance.isChangingAmmoLeft())
+			if(_managerInput.isChangingAmmoLeft())
 			{
 				_currentPosArray--;
 				if(_currentPosArray >= 0)

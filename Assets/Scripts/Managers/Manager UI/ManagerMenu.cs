@@ -25,11 +25,14 @@ public class ManagerMenu : MonoBehaviour {
 
 	private ManagerArray _managerArray;
 	private GiveAllObjectsToManagers _giveAllObjectsToManagers;
-	
+	private ManagerInput _managerInput;
+
 	void OnEnable()
 	{
 		_managerArray = this.GetComponent<ManagerArray>();
 		_giveAllObjectsToManagers = GameObject.FindGameObjectWithTag("GiveAllObjectsToManagers").GetComponent<GiveAllObjectsToManagers>();
+		_managerInput = GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerInput>();
+
 		_player = _giveAllObjectsToManagers.player;
 		_elementMenuToShow = _giveAllObjectsToManagers.menuGame;
 		_elementGameOverToShow = _giveAllObjectsToManagers.menuLoose;
@@ -47,7 +50,7 @@ public class ManagerMenu : MonoBehaviour {
 	void PausingGame()
 	{
 		if(_canPause){
-			if(ManagerInput.Instance.isPausing()){
+			if(_managerInput.isPausing()){
 				//Game is paused
 				if(Time.timeScale != 0){
 					Time.timeScale = 0;
@@ -72,8 +75,7 @@ public class ManagerMenu : MonoBehaviour {
 
 	void GoingMainMenu()
 	{
-		if(ManagerInput.Instance.goingBackMainMenu()) {
-
+		if(_managerInput.goingBackMainMenu()) {
 			Application.LoadLevel("MainMenu");
 		}
 	}
@@ -108,7 +110,7 @@ public class ManagerMenu : MonoBehaviour {
 			}
 		}
 		
-		if(ManagerInput.Instance.isQuitting()) {
+		if(_managerInput.isQuitting()) {
 			Application.Quit();
 		}
 
